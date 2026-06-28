@@ -1,0 +1,186 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.tapcard.app"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="26"
+9        android:targetSdkVersion="34" />
+10
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:5:5-67
+11-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:5:22-64
+12    <uses-permission android:name="android.permission.NFC" />
+12-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:6:5-62
+12-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:6:22-59
+13
+14    <uses-feature
+14-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:7:5-82
+15        android:name="android.hardware.nfc"
+15-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:7:19-54
+16        android:required="false" />
+16-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:7:55-79
+17    <!-- Include required permissions for Google Maps API to run. -->
+18    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+18-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:23:5-79
+18-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:23:22-76
+19
+20    <uses-feature
+20-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:26:5-28:35
+21        android:glEsVersion="0x00020000"
+21-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:27:9-41
+22        android:required="true" />
+22-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:28:9-32
+23
+24    <queries>
+24-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:30:5-34:15
+25
+26        <!-- Needs to be explicitly declared on Android R+ -->
+27        <package android:name="com.google.android.apps.maps" />
+27-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:33:9-64
+27-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:33:18-61
+28    </queries>
+29
+30    <permission
+30-->[androidx.core:core:1.12.0] /Users/matty/.gradle/caches/transforms-3/37e2ec6515df4d9413630431476ba7b9/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+31        android:name="com.tapcard.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+31-->[androidx.core:core:1.12.0] /Users/matty/.gradle/caches/transforms-3/37e2ec6515df4d9413630431476ba7b9/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+32        android:protectionLevel="signature" />
+32-->[androidx.core:core:1.12.0] /Users/matty/.gradle/caches/transforms-3/37e2ec6515df4d9413630431476ba7b9/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+33
+34    <uses-permission android:name="com.tapcard.app.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+34-->[androidx.core:core:1.12.0] /Users/matty/.gradle/caches/transforms-3/37e2ec6515df4d9413630431476ba7b9/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+34-->[androidx.core:core:1.12.0] /Users/matty/.gradle/caches/transforms-3/37e2ec6515df4d9413630431476ba7b9/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+35
+36    <application
+36-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:9:5-28:19
+37        android:allowBackup="true"
+37-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:10:9-35
+38        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+38-->[androidx.core:core:1.12.0] /Users/matty/.gradle/caches/transforms-3/37e2ec6515df4d9413630431476ba7b9/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+39        android:dataExtractionRules="@xml/data_extraction_rules"
+39-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:11:9-65
+40        android:debuggable="true"
+41        android:extractNativeLibs="false"
+42        android:fullBackupContent="@xml/backup_rules"
+42-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:12:9-54
+43        android:label="@string/app_name"
+43-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:13:9-41
+44        android:supportsRtl="true"
+44-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:14:9-35
+45        android:theme="@style/Theme.TapCard" >
+45-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:15:9-45
+46        <activity
+46-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:18:9-27:20
+47            android:name="com.tapcard.app.MainActivity"
+47-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:19:13-41
+48            android:exported="true"
+48-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:20:13-36
+49            android:label="@string/app_name"
+49-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:21:13-45
+50            android:theme="@style/Theme.TapCard" >
+50-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:22:13-49
+51            <intent-filter>
+51-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:23:13-26:29
+52                <action android:name="android.intent.action.MAIN" />
+52-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:24:17-69
+52-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:24:25-66
+53
+54                <category android:name="android.intent.category.LAUNCHER" />
+54-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:25:17-77
+54-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:25:27-74
+55            </intent-filter>
+56        </activity>
+57        <!-- Needs to be explicitly declared on P+ -->
+58        <uses-library
+58-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:39:9-41:40
+59            android:name="org.apache.http.legacy"
+59-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:40:13-50
+60            android:required="false" />
+60-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/3e80d432a2823927452f5db6db2b63bc/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:41:13-37
+61
+62        <activity
+62-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/c6dbd810adafa9aacf6e3dd7067ea573/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+63            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+63-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/c6dbd810adafa9aacf6e3dd7067ea573/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+64            android:exported="false"
+64-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/c6dbd810adafa9aacf6e3dd7067ea573/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+65            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+65-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/c6dbd810adafa9aacf6e3dd7067ea573/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+66
+67        <meta-data
+67-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/13280cdaa09c1e1e774e5db624484d3a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+68            android:name="com.google.android.gms.version"
+68-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/13280cdaa09c1e1e774e5db624484d3a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+69            android:value="@integer/google_play_services_version" />
+69-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/13280cdaa09c1e1e774e5db624484d3a/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+70
+71        <provider
+71-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:24:9-32:20
+72            android:name="androidx.startup.InitializationProvider"
+72-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:25:13-67
+73            android:authorities="com.tapcard.app.androidx-startup"
+73-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:26:13-68
+74            android:exported="false" >
+74-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:27:13-37
+75            <meta-data
+75-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+76-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:30:17-75
+77                android:value="androidx.startup" />
+77-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/73b7820fee07d6b44a0d8e4235e0f9a2/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:31:17-49
+78            <meta-data
+78-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/matty/.gradle/caches/transforms-3/4ac91a495badd9521fd27095575fd80c/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
+79                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+79-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/matty/.gradle/caches/transforms-3/4ac91a495badd9521fd27095575fd80c/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
+80                android:value="androidx.startup" />
+80-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/matty/.gradle/caches/transforms-3/4ac91a495badd9521fd27095575fd80c/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
+81            <meta-data
+81-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
+82                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+82-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
+83                android:value="androidx.startup" />
+83-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
+84        </provider>
+85
+86        <receiver
+86-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
+87            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+87-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
+88            android:directBootAware="false"
+88-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
+89            android:enabled="true"
+89-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
+90            android:exported="true"
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
+91            android:permission="android.permission.DUMP" >
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
+92            <intent-filter>
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
+93                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
+93-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
+94            </intent-filter>
+95            <intent-filter>
+95-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
+96                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
+96-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
+97            </intent-filter>
+98            <intent-filter>
+98-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
+99                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
+99-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
+100            </intent-filter>
+101            <intent-filter>
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
+102                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/0aa504fbf197a17960e6a8c05b0aeeae/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
+103            </intent-filter>
+104        </receiver>
+105    </application>
+106
+107</manifest>
