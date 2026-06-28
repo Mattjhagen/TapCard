@@ -16,6 +16,7 @@ import com.tapcard.app.di.AppModule_ProvideProfileRepositoryFactory;
 import com.tapcard.app.domain.repository.ProfileRepository;
 import com.tapcard.app.ui.viewmodel.ProfileViewModel;
 import com.tapcard.app.ui.viewmodel.ProfileViewModel_HiltModules_KeyModule_ProvideFactory;
+import com.tapcard.app.utils.NfcService;
 import com.tapcard.app.utils.QRExportService;
 import dagger.hilt.android.ActivityRetainedLifecycle;
 import dagger.hilt.android.ViewModelLifecycle;
@@ -447,7 +448,7 @@ public final class DaggerTapCardApplication_HiltComponents_SingletonC {
       public T get() {
         switch (id) {
           case 0: // com.tapcard.app.ui.viewmodel.ProfileViewModel 
-          return (T) new ProfileViewModel(singletonCImpl.provideProfileRepositoryProvider.get(), singletonCImpl.qRExportServiceProvider.get());
+          return (T) new ProfileViewModel(singletonCImpl.provideProfileRepositoryProvider.get(), singletonCImpl.qRExportServiceProvider.get(), singletonCImpl.nfcServiceProvider.get());
 
           default: throw new AssertionError(id);
         }
@@ -536,6 +537,8 @@ public final class DaggerTapCardApplication_HiltComponents_SingletonC {
 
     private Provider<QRExportService> qRExportServiceProvider;
 
+    private Provider<NfcService> nfcServiceProvider;
+
     private SingletonCImpl(ApplicationContextModule applicationContextModuleParam) {
       this.applicationContextModule = applicationContextModuleParam;
       initialize(applicationContextModuleParam);
@@ -548,6 +551,7 @@ public final class DaggerTapCardApplication_HiltComponents_SingletonC {
       this.provideProfileDaoProvider = DoubleCheck.provider(new SwitchingProvider<ProfileDao>(singletonCImpl, 1));
       this.provideProfileRepositoryProvider = DoubleCheck.provider(new SwitchingProvider<ProfileRepository>(singletonCImpl, 0));
       this.qRExportServiceProvider = DoubleCheck.provider(new SwitchingProvider<QRExportService>(singletonCImpl, 3));
+      this.nfcServiceProvider = DoubleCheck.provider(new SwitchingProvider<NfcService>(singletonCImpl, 4));
     }
 
     @Override
@@ -594,6 +598,9 @@ public final class DaggerTapCardApplication_HiltComponents_SingletonC {
 
           case 3: // com.tapcard.app.utils.QRExportService 
           return (T) new QRExportService(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
+
+          case 4: // com.tapcard.app.utils.NfcService 
+          return (T) new NfcService(ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
           default: throw new AssertionError(id);
         }

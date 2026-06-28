@@ -30,6 +30,7 @@ import com.tapcard.app.ui.components.BusinessCardPreview
 import com.tapcard.app.utils.QRCodeGenerator
 import com.tapcard.app.utils.NfcState
 import com.tapcard.app.ui.viewmodel.ProfileViewModel
+import com.tapcard.app.domain.wallet.WalletConfig
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -204,15 +205,22 @@ fun DashboardScreen(
             // Google Wallet Button
             OutlinedButton(
                 onClick = {
-                    // TODO: Implement Google Wallet API PayClient savePassesJwt
-                    Toast.makeText(context, "Requesting Wallet JWT from server... (Mock)", Toast.LENGTH_SHORT).show()
+                    if (WalletConfig.isGoogleWalletEnabled) {
+                        // Real Wallet implementation goes here when backend is ready
+                    } else {
+                        Toast.makeText(context, "Google Wallet requires backend configuration.", Toast.LENGTH_SHORT).show()
+                    }
                 },
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(56.dp),
-                shape = MaterialTheme.shapes.medium
+                shape = MaterialTheme.shapes.medium,
+                enabled = WalletConfig.isGoogleWalletEnabled
             ) {
-                Text("Add to Google Wallet", fontWeight = FontWeight.Bold)
+                Text(
+                    if (WalletConfig.isGoogleWalletEnabled) "Add to Google Wallet" else "Google Wallet coming soon", 
+                    fontWeight = FontWeight.Bold
+                )
             }
             
             Spacer(modifier = Modifier.height(32.dp))

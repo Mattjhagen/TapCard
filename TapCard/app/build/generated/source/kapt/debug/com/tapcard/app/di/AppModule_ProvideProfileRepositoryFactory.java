@@ -20,23 +20,22 @@ import javax.inject.Provider;
     "KotlinInternalInJava"
 })
 public final class AppModule_ProvideProfileRepositoryFactory implements Factory<ProfileRepository> {
-  private final Provider<ProfileDao> profileDaoProvider;
+  private final Provider<ProfileDao> daoProvider;
 
-  public AppModule_ProvideProfileRepositoryFactory(Provider<ProfileDao> profileDaoProvider) {
-    this.profileDaoProvider = profileDaoProvider;
+  public AppModule_ProvideProfileRepositoryFactory(Provider<ProfileDao> daoProvider) {
+    this.daoProvider = daoProvider;
   }
 
   @Override
   public ProfileRepository get() {
-    return provideProfileRepository(profileDaoProvider.get());
+    return provideProfileRepository(daoProvider.get());
   }
 
-  public static AppModule_ProvideProfileRepositoryFactory create(
-      Provider<ProfileDao> profileDaoProvider) {
-    return new AppModule_ProvideProfileRepositoryFactory(profileDaoProvider);
+  public static AppModule_ProvideProfileRepositoryFactory create(Provider<ProfileDao> daoProvider) {
+    return new AppModule_ProvideProfileRepositoryFactory(daoProvider);
   }
 
-  public static ProfileRepository provideProfileRepository(ProfileDao profileDao) {
-    return Preconditions.checkNotNullFromProvides(AppModule.INSTANCE.provideProfileRepository(profileDao));
+  public static ProfileRepository provideProfileRepository(ProfileDao dao) {
+    return Preconditions.checkNotNullFromProvides(AppModule.INSTANCE.provideProfileRepository(dao));
   }
 }
