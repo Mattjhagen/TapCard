@@ -23,6 +23,7 @@ import javax.inject.Inject
 import android.graphics.Bitmap
 import android.content.Intent
 import com.tapcard.app.utils.QRExportService
+import com.tapcard.app.utils.AnalyticsManager
 import com.tapcard.app.utils.NfcService
 import com.tapcard.app.utils.NfcState
 import android.app.Activity
@@ -46,6 +47,9 @@ class ProfileViewModel @Inject constructor(
 ) : ViewModel() {
     private val _profileState = MutableStateFlow(Profile())
     val profileState: StateFlow<Profile> = _profileState.asStateFlow()
+
+    private val _profilesList = MutableStateFlow<List<Profile>>(emptyList())
+    val profilesList: StateFlow<List<Profile>> = _profilesList.asStateFlow()
     
     private val _nfcState = MutableStateFlow(nfcService.getNfcState())
     val nfcState: StateFlow<NfcState> = _nfcState.asStateFlow()
@@ -85,6 +89,12 @@ class ProfileViewModel @Inject constructor(
         }
 
         viewModelScope.launch {
+            repository.getAllProfilesFlow().collect { list ->
+                _profilesList.value = list
+            }
+        }
+
+        viewModelScope.launch {
             _usernameInputFlow
                 .debounce(500)
                 .distinctUntilChanged()
@@ -98,16 +108,34 @@ class ProfileViewModel @Inject constructor(
         _profileState.update { newProfile }
     }
 
+    fun switchProfile(id: String) {
+        repository.setActiveProfileId(id)
+    }
+
+    fun createNewProfile(name: String) {
+        val newProfile = Profile(profileName = name)
+        viewModelScope.launch {
+            repository.saveProfile(newProfile)
+            repository.setActiveProfileId(newProfile.id)
+        }
+    }
+
     fun saveProfile() {
         viewModelScope.launch {
             repository.saveProfile(_profileState.value)
             _isSaved.value = true
+            AnalyticsManager.logCardSaved()
         }
     }
 
     fun getShareableUrl(): String {
         val username = profileState.value.username.ifBlank { profileState.value.id.toString() }
-        return "https://tapcard.app/card/$username"
+        val profileName = profileState.value.profileName.lowercase().replace(" ", "-")
+        return if (profileName == "personal" || profileName == "default") {
+            "https://tapcard.app/u/$username"
+        } else {
+            "https://tapcard.app/u/$username/$profileName"
+        }
     }
 
     fun onUsernameChanged(username: String) {
@@ -156,10 +184,12 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun saveQrToGallery(bitmap: Bitmap): Boolean {
+        AnalyticsManager.logQrGenerated()
         return qrExportService.saveQrToGallery(bitmap)
     }
 
     fun shareQrCode(bitmap: Bitmap, text: String): Intent? {
+        AnalyticsManager.logQrShared()
         return qrExportService.shareQrCode(bitmap, text)
     }
 
