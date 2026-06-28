@@ -14,6 +14,9 @@ import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.debounce
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.FlowPreview
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 import android.graphics.Bitmap
@@ -23,6 +26,17 @@ import com.tapcard.app.utils.NfcService
 import com.tapcard.app.utils.NfcState
 import android.app.Activity
 
+enum class UsernameValidationState {
+    IDLE,
+    CHECKING,
+    AVAILABLE,
+    TAKEN,
+    INVALID_FORMAT,
+    SIGN_IN_TO_VALIDATE,
+    SUPABASE_NOT_CONFIGURED
+}
+
+@OptIn(FlowPreview::class)
 @HiltViewModel
 class ProfileViewModel @Inject constructor(
     private val repository: ProfileRepository,
@@ -41,6 +55,11 @@ class ProfileViewModel @Inject constructor(
     private val _isSaved = MutableStateFlow(false)
     val isSaved = _isSaved.asStateFlow()
 
+    private val _usernameValidationState = MutableStateFlow(UsernameValidationState.IDLE)
+    val usernameValidationState = _usernameValidationState.asStateFlow()
+
+    private val _usernameInputFlow = MutableStateFlow("")
+
     val syncStatus: StateFlow<SyncStatus> = repository.syncStatus
         .stateIn(
             scope = viewModelScope,
@@ -55,6 +74,15 @@ class ProfileViewModel @Inject constructor(
                     _profileState.value = profile
                 }
             }
+        }
+
+        viewModelScope.launch {
+            _usernameInputFlow
+                .debounce(500)
+                .distinctUntilChanged()
+                .collect { username ->
+                    performUsernameValidation(username)
+                }
         }
     }
 
@@ -72,6 +100,47 @@ class ProfileViewModel @Inject constructor(
     fun getShareableUrl(): String {
         val username = profileState.value.username.ifBlank { profileState.value.id.toString() }
         return "https://tapcard.app/card/$username"
+    }
+
+    fun onUsernameChanged(username: String) {
+        // Enforce basic characters during typing if we want, but better to let them type and show INVALID_FORMAT
+        _usernameInputFlow.value = username
+        _usernameValidationState.value = UsernameValidationState.CHECKING
+    }
+
+    private suspend fun performUsernameValidation(username: String) {
+        if (username.isBlank()) {
+            _usernameValidationState.value = UsernameValidationState.IDLE
+            return
+        }
+
+        if (!username.matches(Regex("^[a-z0-9-]{3,30}$"))) {
+            _usernameValidationState.value = UsernameValidationState.INVALID_FORMAT
+            return
+        }
+
+        _usernameValidationState.value = UsernameValidationState.CHECKING
+
+        // Only checking if we need to call Supabase. 
+        // We allow local-only save if signed out, but we should let user know.
+        val currentSyncStatus = syncStatus.value
+        if (currentSyncStatus == SyncStatus.SIGN_IN_TO_SYNC) {
+            _usernameValidationState.value = UsernameValidationState.SIGN_IN_TO_VALIDATE
+            return
+        }
+
+        val isAvailable = repository.validateUsernameUniqueness(username)
+        if (isAvailable) {
+            _usernameValidationState.value = UsernameValidationState.AVAILABLE
+        } else {
+            // Wait, if it's taken, is it taken by US? 
+            // For now, if we get here and it's our own username, it shouldn't show TAKEN.
+            if (profileState.value.username == username) {
+                _usernameValidationState.value = UsernameValidationState.AVAILABLE
+            } else {
+                _usernameValidationState.value = UsernameValidationState.TAKEN
+            }
+        }
     }
 
     suspend fun validateUsername(username: String): Boolean {

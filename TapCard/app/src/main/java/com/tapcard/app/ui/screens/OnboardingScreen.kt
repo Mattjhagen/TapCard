@@ -12,6 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.tapcard.app.ui.viewmodel.ProfileViewModel
+import com.tapcard.app.ui.viewmodel.UsernameValidationState
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -28,6 +29,18 @@ fun OnboardingScreen(
     var email by remember { mutableStateOf(profile.email) }
     var website by remember { mutableStateOf(profile.website) }
     var username by remember { mutableStateOf(profile.username) }
+
+    val validationState by viewModel.usernameValidationState.collectAsState()
+
+    // Initialize validation
+    LaunchedEffect(Unit) {
+        viewModel.onUsernameChanged(username)
+    }
+
+    val isUsernameValid = validationState == UsernameValidationState.AVAILABLE ||
+                          validationState == UsernameValidationState.SIGN_IN_TO_VALIDATE ||
+                          validationState == UsernameValidationState.SUPABASE_NOT_CONFIGURED ||
+                          validationState == UsernameValidationState.IDLE
 
     Scaffold(
         topBar = {
@@ -106,11 +119,42 @@ fun OnboardingScreen(
             
             OutlinedTextField(
                 value = username,
-                onValueChange = { username = it },
+                onValueChange = { 
+                    username = it
+                    viewModel.onUsernameChanged(it)
+                },
                 label = { Text("Username (for share link)") },
-                modifier = Modifier.fillMaxWidth().padding(bottom = 24.dp),
-                singleLine = true
+                modifier = Modifier.fillMaxWidth(),
+                singleLine = true,
+                isError = validationState == UsernameValidationState.TAKEN || validationState == UsernameValidationState.INVALID_FORMAT
             )
+            
+            val helperText = when (validationState) {
+                UsernameValidationState.IDLE -> ""
+                UsernameValidationState.CHECKING -> "Checking availability..."
+                UsernameValidationState.AVAILABLE -> "Username available"
+                UsernameValidationState.TAKEN -> "Username taken"
+                UsernameValidationState.INVALID_FORMAT -> "Invalid format (3-30 chars, lowercase, numbers, hyphens)"
+                UsernameValidationState.SIGN_IN_TO_VALIDATE -> "Local only / username not reserved (sign in to sync)"
+                UsernameValidationState.SUPABASE_NOT_CONFIGURED -> "Local only (Supabase not configured)"
+            }
+            val helperColor = when (validationState) {
+                UsernameValidationState.AVAILABLE -> Color(0xFF388E3C) // Green
+                UsernameValidationState.TAKEN, UsernameValidationState.INVALID_FORMAT -> MaterialTheme.colorScheme.error
+                else -> MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
+            }
+            if (helperText.isNotEmpty()) {
+                Text(
+                    text = helperText,
+                    color = helperColor,
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(start = 8.dp, top = 4.dp, bottom = 16.dp)
+                )
+            } else {
+                Spacer(modifier = Modifier.height(24.dp))
+            }
 
             Button(
                 onClick = {
@@ -132,6 +176,7 @@ fun OnboardingScreen(
                     .fillMaxWidth()
                     .height(56.dp),
                 shape = MaterialTheme.shapes.medium,
+                enabled = isUsernameValid,
                 colors = ButtonDefaults.buttonColors(
                     containerColor = MaterialTheme.colorScheme.onBackground,
                     contentColor = MaterialTheme.colorScheme.background
