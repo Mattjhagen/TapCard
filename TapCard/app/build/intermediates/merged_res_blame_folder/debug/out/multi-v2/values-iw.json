@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tapcard.app-mergeDebugResources-73:/values-iw/values-iw.xml",
+            "outputFile": "com.tapcard.app-mergeDebugResources-71:/values-iw/values-iw.xml",
             "map": [
                 {
                     "source": "/Users/matty/.gradle/caches/transforms-3/6887116f5a3f099ffd2bd731813c3359/transformed/jetified-play-services-wallet-19.2.1/res/values-iw/values.xml",

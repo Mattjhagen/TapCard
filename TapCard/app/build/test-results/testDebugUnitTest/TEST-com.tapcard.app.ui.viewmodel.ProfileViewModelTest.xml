@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.tapcard.app.ui.viewmodel.ProfileViewModelTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-06-28T15:54:44" hostname="Mattys-MacBook-Air-4.local" time="1.26">
+<testsuite name="com.tapcard.app.ui.viewmodel.ProfileViewModelTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2026-06-28T16:22:02" hostname="Mattys-MacBook-Air-4.local" time="0.316">
   <properties/>
-  <testcase name="testUsernameValidation_Valid" classname="com.tapcard.app.ui.viewmodel.ProfileViewModelTest" time="1.25"/>
-  <testcase name="testUsernameValidation_InvalidFormat" classname="com.tapcard.app.ui.viewmodel.ProfileViewModelTest" time="0.01"/>
+  <testcase name="testUsernameValidation_Valid" classname="com.tapcard.app.ui.viewmodel.ProfileViewModelTest" time="0.304"/>
+  <testcase name="testUsernameValidation_InvalidFormat" classname="com.tapcard.app.ui.viewmodel.ProfileViewModelTest" time="0.012"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
-SLF4J: Defaulting to no-operation (NOP) logger implementation
-SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>

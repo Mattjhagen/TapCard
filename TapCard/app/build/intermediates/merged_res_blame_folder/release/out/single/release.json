@@ -1,14 +1,14 @@
 [
     {
-        "merged": "com.tapcard.app-merged_res-63:/xml_backup_rules.xml.flat",
-        "source": "com.tapcard.app-main-64:/xml/backup_rules.xml"
+        "merged": "com.tapcard.app-merged_res-69:/xml_data_extraction_rules.xml.flat",
+        "source": "com.tapcard.app-main-70:/xml/data_extraction_rules.xml"
     },
     {
-        "merged": "com.tapcard.app-merged_res-63:/xml_provider_paths.xml.flat",
-        "source": "com.tapcard.app-main-64:/xml/provider_paths.xml"
+        "merged": "com.tapcard.app-merged_res-69:/xml_backup_rules.xml.flat",
+        "source": "com.tapcard.app-main-70:/xml/backup_rules.xml"
     },
     {
-        "merged": "com.tapcard.app-merged_res-63:/xml_data_extraction_rules.xml.flat",
-        "source": "com.tapcard.app-main-64:/xml/data_extraction_rules.xml"
+        "merged": "com.tapcard.app-merged_res-69:/xml_provider_paths.xml.flat",
+        "source": "com.tapcard.app-main-70:/xml/provider_paths.xml"
     }
 ]

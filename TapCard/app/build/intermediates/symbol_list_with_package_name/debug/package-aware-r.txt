@@ -391,7 +391,6 @@ string call_notification_screening_text
 string close_drawer
 string close_sheet
 string collapsed
-string com_google_firebase_crashlytics_mapping_file_id
 string common_google_play_services_enable_button
 string common_google_play_services_enable_text
 string common_google_play_services_enable_title
@@ -450,11 +449,6 @@ string expanded
 string fallback_menu_item_copy_link
 string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
-string gcm_defaultSenderId
-string google_api_key
-string google_app_id
-string google_crash_reporting_api_key
-string google_storage_bucket
 string gpay_logo_description
 string in_progress
 string indeterminate
@@ -463,7 +457,6 @@ string navigation_menu
 string not_selected
 string off
 string on
-string project_id
 string range_end
 string range_start
 string search_bar_search
