@@ -1,26 +1,37 @@
-import { getProfile } from '@/lib/data'
-import { supabase } from '@/lib/supabase'
+import { getDefaultProfile, getProfile } from '@/lib/data'
 import { notFound } from 'next/navigation'
 import Image from 'next/image'
 import { Briefcase, Mail, Globe, Phone, Download } from 'lucide-react'
+import { validateEnvironment } from '@/lib/environment'
+import { logEvent, parseRef } from '@/lib/analytics'
+import UnconfiguredPage from './UnconfiguredPage'
 
-export default async function ProfileView({ username, profileName = 'personal' }: { username: string, profileName?: string }) {
-  const profile = await getProfile(username, profileName)
+type Props = {
+  username: string
+  /** profile_slug from URL — defaults to 'personal' for the /u/[username] root route. */
+  profileSlug?: string
+  /** Raw ?ref= query param value. Will be normalized before storage. */
+  refSource?: string
+}
+
+export default async function ProfileView({ username, profileSlug = 'personal', refSource }: Props) {
+  // Guard: show dev-friendly page if env vars are missing
+  const env = validateEnvironment()
+  if (!env.isConfigured) {
+    return <UnconfiguredPage missing={env.missing} />
+  }
+
+  const profile = profileSlug === 'personal'
+    ? await getDefaultProfile(username)
+    : await getProfile(username, profileSlug)
 
   if (!profile) {
     notFound()
   }
 
-  // Log analytics event on the server
-  try {
-    await supabase.from('analytics_events').insert({
-      profile_id: profile.id,
-      event_type: 'profile_view',
-      source: 'web'
-    })
-  } catch (error) {
-    console.error('Failed to log analytics:', error)
-  }
+  // Log analytics event server-side with normalized source
+  const normalizedSource = parseRef(refSource)
+  await logEvent(profile.id, 'profile_view', normalizedSource)
 
   const isDark = profile.is_dark_theme
   const themeColor = profile.theme_color_hex
@@ -28,12 +39,12 @@ export default async function ProfileView({ username, profileName = 'personal' }
   return (
     <div className={`min-h-screen font-sans antialiased transition-colors duration-300 ${isDark ? 'bg-zinc-900 text-zinc-100' : 'bg-zinc-50 text-zinc-900'}`}>
       <div className="max-w-md mx-auto min-h-screen flex flex-col p-6 shadow-2xl relative overflow-hidden" style={{ backgroundColor: isDark ? '#18181b' : '#ffffff' }}>
-        
+
         {/* Dynamic Theme Gradient Background */}
         <div className="absolute top-0 left-0 right-0 h-48 opacity-20" style={{ background: `linear-gradient(to bottom, ${themeColor}, transparent)` }} />
-        
+
         <main className="flex-1 flex flex-col items-center pt-8 z-10">
-          
+
           <div className="relative mb-6">
             <div className="w-32 h-32 rounded-full overflow-hidden border-4" style={{ borderColor: themeColor }}>
               {profile.profile_photo_url ? (
@@ -52,7 +63,7 @@ export default async function ProfileView({ username, profileName = 'personal' }
           </div>
 
           <h1 className="text-3xl font-bold mb-1 tracking-tight">{profile.full_name || username}</h1>
-          
+
           {profile.job_title && (
             <p className="text-lg font-medium flex items-center gap-2 mb-1" style={{ color: themeColor }}>
               <Briefcase size={18} />
@@ -66,7 +77,7 @@ export default async function ProfileView({ username, profileName = 'personal' }
              </p>
           )}
 
-          {/* Identity Tag */}
+          {/* Identity Tag — shows display name, not slug */}
           <div className="px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-8 bg-zinc-200 dark:bg-zinc-800" style={{ color: themeColor }}>
             {profile.profile_name}
           </div>
@@ -112,7 +123,8 @@ export default async function ProfileView({ username, profileName = 'personal' }
         </main>
 
         <footer className="mt-auto pb-4 pt-6 z-10 w-full flex justify-center">
-          <a href={`/api/vcard/${username}/${profile.profile_name.toLowerCase().replace(' ', '-')}`} 
+          {/* vCard link uses profile_slug directly — no inline transform */}
+          <a href={`/api/vcard/${username}/${profile.profile_slug}`}
              className="flex items-center justify-center gap-2 w-full py-4 rounded-xl font-bold text-white transition-transform hover:scale-[1.02] active:scale-95 shadow-lg"
              style={{ backgroundColor: themeColor }}>
             <Download size={20} />

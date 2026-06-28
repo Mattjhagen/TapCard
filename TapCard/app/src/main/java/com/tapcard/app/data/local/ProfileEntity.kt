@@ -2,6 +2,8 @@ package com.tapcard.app.data.local
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import androidx.room.migration.Migration
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.tapcard.app.domain.model.Profile
 
 @Entity(tableName = "profile")
@@ -9,6 +11,8 @@ data class ProfileEntity(
     @PrimaryKey val id: String = java.util.UUID.randomUUID().toString(),
     val userId: String = "",
     val profileName: String = "Personal",
+    /** Stored slug — immutable URL-safe identifier for this profile. */
+    val profileSlug: String = "personal",
     val fullName: String = "",
     val jobTitle: String = "",
     val company: String = "",
@@ -26,11 +30,25 @@ data class ProfileEntity(
     val companyLogoUrl: String? = null
 )
 
+/** Room migration 1 → 2: adds profileSlug column, backfills from profileName. */
+val MIGRATION_1_2 = object : Migration(1, 2) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE profile ADD COLUMN profileSlug TEXT NOT NULL DEFAULT 'personal'")
+        // Backfill: lowercase, spaces → hyphens
+        db.execSQL("""
+            UPDATE profile
+            SET profileSlug = lower(replace(trim(profileName), ' ', '-'))
+            WHERE profileSlug = 'personal' AND profileName != 'Personal'
+        """.trimIndent())
+    }
+}
+
 fun ProfileEntity.toDomainModel(): Profile {
     return Profile(
         id = this.id,
         userId = this.userId,
         profileName = this.profileName,
+        profileSlug = this.profileSlug,
         fullName = this.fullName,
         jobTitle = this.jobTitle,
         company = this.company,
@@ -54,6 +72,7 @@ fun Profile.toEntity(): ProfileEntity {
         id = this.id,
         userId = this.userId,
         profileName = this.profileName,
+        profileSlug = this.profileSlug,
         fullName = this.fullName,
         jobTitle = this.jobTitle,
         company = this.company,

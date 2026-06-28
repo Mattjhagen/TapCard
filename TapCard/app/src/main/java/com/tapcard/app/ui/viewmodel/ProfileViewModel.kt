@@ -113,10 +113,29 @@ class ProfileViewModel @Inject constructor(
     }
 
     fun createNewProfile(name: String) {
-        val newProfile = Profile(profileName = name)
+        val newProfile = Profile(
+            profileName = name,
+            profileSlug = computeSlug(name)
+        )
         viewModelScope.launch {
             repository.saveProfile(newProfile)
             repository.setActiveProfileId(newProfile.id)
+        }
+    }
+
+    companion object {
+        /**
+         * Converts a display name to a URL-safe slug.
+         * "Real Estate" → "real-estate", "Mortgage Loan Officer" → "mortgage-loan-officer"
+         * This is the single source of truth for slug generation.
+         */
+        fun computeSlug(name: String): String {
+            return name
+                .trim()
+                .lowercase()
+                .replace(Regex("[^a-z0-9\\s-]"), "")  // strip non-alphanumeric
+                .replace(Regex("\\s+"), "-")           // spaces → hyphen
+                .replace(Regex("-{2,}"), "-")          // collapse double hyphens
         }
     }
 
@@ -130,11 +149,12 @@ class ProfileViewModel @Inject constructor(
 
     fun getShareableUrl(): String {
         val username = profileState.value.username.ifBlank { profileState.value.id.toString() }
-        val profileName = profileState.value.profileName.lowercase().replace(" ", "-")
-        return if (profileName == "personal" || profileName == "default") {
+        // Use the stored slug — never re-derive from display name at runtime.
+        val slug = profileState.value.profileSlug.ifBlank { computeSlug(profileState.value.profileName) }
+        return if (slug == "personal" || slug == "default") {
             "https://tapcard.app/u/$username"
         } else {
-            "https://tapcard.app/u/$username/$profileName"
+            "https://tapcard.app/u/$username/$slug"
         }
     }
 

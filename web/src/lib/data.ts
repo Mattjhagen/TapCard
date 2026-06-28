@@ -1,26 +1,46 @@
 import { supabase, Profile } from './supabase'
 
-export async function getProfile(username: string, profileName: string = 'personal'): Promise<Profile | null> {
+/**
+ * Fetch a profile by username and optional profile_slug.
+ * Queries the profile_slug column directly — no fragile in-memory transforms.
+ */
+export async function getProfile(
+  username: string,
+  profileSlug: string = 'personal'
+): Promise<Profile | null> {
   const { data, error } = await supabase
     .from('profiles')
     .select('*')
     .eq('username', username)
+    .eq('profile_slug', profileSlug)
     .eq('is_public', true)
-    
-  if (error || !data || data.length === 0) {
+    .limit(1)
+    .single()
+
+  if (error || !data) {
     return null
   }
 
-  // Find the exact match or default to personal if not found
-  const exactMatch = data.find(p => p.profile_name.toLowerCase().replace(" ", "-") === profileName.toLowerCase())
-  if (exactMatch) {
-    return exactMatch
-  }
+  return data
+}
 
-  // Fallback to the first available if they only have one
-  if (data.length === 1 && profileName === 'personal') {
-    return data[0]
-  }
+/**
+ * Fetch the default (personal) profile for a username.
+ * Falls back to the first public profile if no 'personal' slug exists.
+ */
+export async function getDefaultProfile(username: string): Promise<Profile | null> {
+  // Try 'personal' slug first
+  const personal = await getProfile(username, 'personal')
+  if (personal) return personal
 
-  return null
+  // Fallback: first public profile for this username
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('username', username)
+    .eq('is_public', true)
+    .limit(1)
+    .single()
+
+  return data ?? null
 }

@@ -4,6 +4,8 @@ data class Profile(
     val id: String = java.util.UUID.randomUUID().toString(),
     val userId: String = "",
     val profileName: String = "Personal",
+    /** Immutable URL-safe slug derived from profileName on creation. e.g. "Real Estate" → "real-estate" */
+    val profileSlug: String = "personal",
     val fullName: String = "",
     val jobTitle: String = "",
     val company: String = "",

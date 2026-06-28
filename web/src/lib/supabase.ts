@@ -9,6 +9,8 @@ export type Profile = {
   id: string
   user_id: string
   profile_name: string
+  /** Immutable URL-safe slug. Source of truth for routing. e.g. "real-estate" */
+  profile_slug: string
   username: string
   full_name: string | null
   job_title: string | null
