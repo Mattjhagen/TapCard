@@ -7,24 +7,19 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
-import androidx.lifecycle.viewmodel.compose.viewModel
-import com.tapcard.app.data.local.AppDatabase
-import com.tapcard.app.data.repository.LocalProfileRepositoryImpl
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.tapcard.app.ui.navigation.AppNavigation
 import com.tapcard.app.ui.theme.TapCardTheme
 import com.tapcard.app.ui.viewmodel.ProfileViewModel
-import com.tapcard.app.ui.viewmodel.ProfileViewModelFactory
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         
-        val database = AppDatabase.getDatabase(this)
-        val repository = LocalProfileRepositoryImpl(database.profileDao())
-        val factory = ProfileViewModelFactory(repository)
-
         setContent {
-            val sharedViewModel: ProfileViewModel = viewModel(factory = factory)
+            val sharedViewModel: ProfileViewModel = hiltViewModel()
             
             TapCardTheme {
                 Surface(

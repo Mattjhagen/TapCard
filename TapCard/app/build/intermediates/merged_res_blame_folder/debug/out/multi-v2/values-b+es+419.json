@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.tapcard.app-mergeDebugResources-54:/values-b+es+419/values-b+es+419.xml",
+            "outputFile": "com.tapcard.app-mergeDebugResources-56:/values-b+es+419/values-b+es+419.xml",
             "map": [
                 {
-                    "source": "/Users/matty/.gradle/caches/transforms-3/a328e11c28f7aa8e8c145ec922503b74/transformed/jetified-play-services-wallet-19.2.1/res/values-b+es+419/values.xml",
+                    "source": "/Users/matty/.gradle/caches/transforms-3/fca66b348a037b8d9d994aa3f80e6fee/transformed/jetified-play-services-wallet-19.2.1/res/values-b+es+419/values.xml",
                     "from": {
                         "startLines": "4,5",
                         "startColumns": "0,0",

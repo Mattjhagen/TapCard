@@ -9,7 +9,7 @@ CREATE TABLE public.profiles (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::TEXT, NOW()) NOT NULL,
     updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::TEXT, NOW()) NOT NULL,
     username TEXT UNIQUE NOT NULL,
-    full_name TEXT,
+    full_name TEXT,    
     job_title TEXT,
     company TEXT,
     phone TEXT,
