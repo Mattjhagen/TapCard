@@ -18,7 +18,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.tapcard.app.ui.components.BusinessCardPreview
 import com.tapcard.app.utils.QRCodeGenerator
-import com.tapcard.app.viewmodel.ProfileViewModel
+import com.tapcard.app.ui.viewmodel.ProfileViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

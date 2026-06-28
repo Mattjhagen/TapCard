@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.tapcard.app.ui.screens.DashboardScreen
 import com.tapcard.app.ui.screens.OnboardingScreen
 import com.tapcard.app.ui.screens.EditorScreen
-import com.tapcard.app.viewmodel.ProfileViewModel
+import com.tapcard.app.ui.viewmodel.ProfileViewModel
 
 @Composable
 fun AppNavigation(sharedViewModel: ProfileViewModel) {
