@@ -1,25 +1,32 @@
 package com.tapcard.app.data.repository
 
 import com.tapcard.app.data.local.ProfileDao
-import com.tapcard.app.data.local.ProfileEntity
+import com.tapcard.app.data.local.toDomainModel
+import com.tapcard.app.data.local.toEntity
 import com.tapcard.app.data.remote.RemoteProfileDto
+import com.tapcard.app.data.remote.toRemoteDto
 import com.tapcard.app.di.SupabaseClientProvider
 import com.tapcard.app.domain.model.Profile
 import com.tapcard.app.domain.model.SyncStatus
 import com.tapcard.app.domain.repository.ProfileRepository
+import com.tapcard.app.utils.ImageCompressor
+import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
+import io.github.jan.supabase.storage.storage
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 import javax.inject.Singleton
+import android.content.Context
 
 @Singleton
 class SyncProfileRepositoryImpl @Inject constructor(
-    private val profileDao: ProfileDao
+    private val profileDao: ProfileDao,
+    private val context: Context
 ) : ProfileRepository {
 
     private val client = SupabaseClientProvider.client
@@ -36,9 +43,8 @@ class SyncProfileRepositoryImpl @Inject constructor(
     }
 
     override suspend fun saveProfile(profile: Profile) {
-        val entity = profile.toEntity().copy(isPendingSync = true)
-        
         // 1. Save locally to Room first
+        var entity = profile.toEntity().copy(isPendingSync = true)
         profileDao.saveProfile(entity)
         _syncStatus.value = SyncStatus.SAVED_LOCALLY
 
@@ -47,29 +53,52 @@ class SyncProfileRepositoryImpl @Inject constructor(
             _syncStatus.value = SyncStatus.SIGN_IN_TO_SYNC
             return
         }
-
+        
         val session = client.auth.currentSessionOrNull()
         if (session == null) {
             _syncStatus.value = SyncStatus.SIGN_IN_TO_SYNC
             return
         }
 
-        _syncStatus.value = SyncStatus.SYNCING
-
         try {
-            val remoteDto = RemoteProfileDto(
-                id = session.user?.id ?: return,
-                username = profile.username,
-                fullName = profile.fullName,
-                jobTitle = profile.jobTitle,
-                company = profile.company,
-                phone = profile.phone,
-                email = profile.email,
-                website = profile.website,
-                themeColorHex = profile.themeColorHex,
-                isDarkTheme = profile.isDarkTheme,
-                isPublic = true
-            )
+            val userId = session.user?.id ?: return
+            
+            var profilePhotoUrlToSave = profile.profilePhotoUrl
+            var companyLogoUrlToSave = profile.companyLogoUrl
+
+            // Upload profile photo if needed
+            if (profile.profilePhotoLocalUri != null && profile.profilePhotoLocalUri != profile.profilePhotoUrl) {
+                _syncStatus.value = SyncStatus.UPLOADING
+                val bytes = ImageCompressor.compressImage(context, profile.profilePhotoLocalUri)
+                if (bytes != null) {
+                    val path = "$userId/profile-photo.jpg"
+                    client.storage["profile-images"].upload(path, bytes, upsert = true)
+                    profilePhotoUrlToSave = client.storage["profile-images"].publicUrl(path)
+                }
+            }
+
+            // Upload company logo if needed
+            if (profile.companyLogoLocalUri != null && profile.companyLogoLocalUri != profile.companyLogoUrl) {
+                _syncStatus.value = SyncStatus.UPLOADING
+                val bytes = ImageCompressor.compressImage(context, profile.companyLogoLocalUri)
+                if (bytes != null) {
+                    val path = "$userId/company-logo.jpg"
+                    client.storage["profile-images"].upload(path, bytes, upsert = true)
+                    companyLogoUrlToSave = client.storage["profile-images"].publicUrl(path)
+                }
+            }
+
+            val profileToUpload = profile.copy(profilePhotoUrl = profilePhotoUrlToSave, companyLogoUrl = companyLogoUrlToSave)
+            
+            // Save updated URLs to Room if they changed
+            if (profilePhotoUrlToSave != profile.profilePhotoUrl || companyLogoUrlToSave != profile.companyLogoUrl) {
+                entity = profileToUpload.toEntity().copy(isPendingSync = true)
+                profileDao.saveProfile(entity)
+            }
+
+            _syncStatus.value = SyncStatus.SYNCING
+
+            val remoteDto = profileToUpload.toRemoteDto().copy(id = userId)
 
             client.postgrest["profiles"].upsert(remoteDto)
             
@@ -87,14 +116,6 @@ class SyncProfileRepositoryImpl @Inject constructor(
         if (client == null) return true // Cannot validate offline, assume true or false depending on product needs. For now, we allow offline.
         
         return try {
-            val count = client.postgrest["profiles"]
-                .select(columns = Columns.list("id")) {
-                    filter {
-                        eq("username", username)
-                    }
-                }.data.length
-            // If data is just a JSON string, we should parse it. 
-            // In postgrest-kt, select returns a PostgrestResult.
             val result = client.postgrest["profiles"]
                 .select(columns = Columns.list("id")) {
                     filter {
@@ -108,32 +129,4 @@ class SyncProfileRepositoryImpl @Inject constructor(
             true // Allow local save if network fails
         }
     }
-
-    private fun ProfileEntity.toDomainModel() = Profile(
-        id = id,
-        fullName = fullName,
-        jobTitle = jobTitle,
-        company = company,
-        phone = phone,
-        email = email,
-        website = website,
-        username = username,
-        themeColorHex = themeColorHex,
-        isDarkTheme = isDarkTheme,
-        isPendingSync = isPendingSync
-    )
-
-    private fun Profile.toEntity() = ProfileEntity(
-        id = id.ifBlank { "local_profile" },
-        fullName = fullName,
-        jobTitle = jobTitle,
-        company = company,
-        phone = phone,
-        email = email,
-        website = website,
-        username = username,
-        themeColorHex = themeColorHex,
-        isDarkTheme = isDarkTheme,
-        isPendingSync = isPendingSync
-    )
 }

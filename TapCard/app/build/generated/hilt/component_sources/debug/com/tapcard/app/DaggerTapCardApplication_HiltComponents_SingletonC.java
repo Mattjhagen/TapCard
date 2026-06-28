@@ -606,7 +606,7 @@ public final class DaggerTapCardApplication_HiltComponents_SingletonC {
           return (T) AppModule_ProvideAuthRepositoryFactory.provideAuthRepository();
 
           case 1: // com.tapcard.app.domain.repository.ProfileRepository 
-          return (T) AppModule_ProvideProfileRepositoryFactory.provideProfileRepository(singletonCImpl.provideProfileDaoProvider.get());
+          return (T) AppModule_ProvideProfileRepositoryFactory.provideProfileRepository(singletonCImpl.provideProfileDaoProvider.get(), ApplicationContextModule_ProvideContextFactory.provideContext(singletonCImpl.applicationContextModule));
 
           case 2: // com.tapcard.app.data.local.ProfileDao 
           return (T) AppModule_ProvideProfileDaoFactory.provideProfileDao(singletonCImpl.provideAppDatabaseProvider.get());

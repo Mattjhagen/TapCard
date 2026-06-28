@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tapcard.app-mergeDebugResources-57:/values-mr/values-mr.xml",
+            "outputFile": "com.tapcard.app-mergeDebugResources-60:/values-mr/values-mr.xml",
             "map": [
                 {
                     "source": "/Users/matty/.gradle/caches/transforms-3/762d27111915be1a9325ed8bc367306e/transformed/browser-1.7.0/res/values-mr/values-mr.xml",

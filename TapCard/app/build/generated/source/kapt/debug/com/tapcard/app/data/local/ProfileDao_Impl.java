@@ -36,7 +36,7 @@ public final class ProfileDao_Impl implements ProfileDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `profile` (`id`,`fullName`,`jobTitle`,`company`,`phone`,`email`,`website`,`username`,`themeColorHex`,`isDarkTheme`,`isPendingSync`) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `profile` (`id`,`fullName`,`jobTitle`,`company`,`phone`,`email`,`website`,`username`,`themeColorHex`,`isDarkTheme`,`isPublic`,`isPendingSync`,`profilePhotoLocalUri`,`companyLogoLocalUri`,`profilePhotoUrl`,`companyLogoUrl`) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -89,8 +89,30 @@ public final class ProfileDao_Impl implements ProfileDao {
         }
         final int _tmp = entity.isDarkTheme() ? 1 : 0;
         statement.bindLong(10, _tmp);
-        final int _tmp_1 = entity.isPendingSync() ? 1 : 0;
+        final int _tmp_1 = entity.isPublic() ? 1 : 0;
         statement.bindLong(11, _tmp_1);
+        final int _tmp_2 = entity.isPendingSync() ? 1 : 0;
+        statement.bindLong(12, _tmp_2);
+        if (entity.getProfilePhotoLocalUri() == null) {
+          statement.bindNull(13);
+        } else {
+          statement.bindString(13, entity.getProfilePhotoLocalUri());
+        }
+        if (entity.getCompanyLogoLocalUri() == null) {
+          statement.bindNull(14);
+        } else {
+          statement.bindString(14, entity.getCompanyLogoLocalUri());
+        }
+        if (entity.getProfilePhotoUrl() == null) {
+          statement.bindNull(15);
+        } else {
+          statement.bindString(15, entity.getProfilePhotoUrl());
+        }
+        if (entity.getCompanyLogoUrl() == null) {
+          statement.bindNull(16);
+        } else {
+          statement.bindString(16, entity.getCompanyLogoUrl());
+        }
       }
     };
   }
@@ -134,7 +156,12 @@ public final class ProfileDao_Impl implements ProfileDao {
           final int _cursorIndexOfUsername = CursorUtil.getColumnIndexOrThrow(_cursor, "username");
           final int _cursorIndexOfThemeColorHex = CursorUtil.getColumnIndexOrThrow(_cursor, "themeColorHex");
           final int _cursorIndexOfIsDarkTheme = CursorUtil.getColumnIndexOrThrow(_cursor, "isDarkTheme");
+          final int _cursorIndexOfIsPublic = CursorUtil.getColumnIndexOrThrow(_cursor, "isPublic");
           final int _cursorIndexOfIsPendingSync = CursorUtil.getColumnIndexOrThrow(_cursor, "isPendingSync");
+          final int _cursorIndexOfProfilePhotoLocalUri = CursorUtil.getColumnIndexOrThrow(_cursor, "profilePhotoLocalUri");
+          final int _cursorIndexOfCompanyLogoLocalUri = CursorUtil.getColumnIndexOrThrow(_cursor, "companyLogoLocalUri");
+          final int _cursorIndexOfProfilePhotoUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "profilePhotoUrl");
+          final int _cursorIndexOfCompanyLogoUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "companyLogoUrl");
           final ProfileEntity _result;
           if (_cursor.moveToFirst()) {
             final String _tmpId;
@@ -195,11 +222,39 @@ public final class ProfileDao_Impl implements ProfileDao {
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsDarkTheme);
             _tmpIsDarkTheme = _tmp != 0;
-            final boolean _tmpIsPendingSync;
+            final boolean _tmpIsPublic;
             final int _tmp_1;
-            _tmp_1 = _cursor.getInt(_cursorIndexOfIsPendingSync);
-            _tmpIsPendingSync = _tmp_1 != 0;
-            _result = new ProfileEntity(_tmpId,_tmpFullName,_tmpJobTitle,_tmpCompany,_tmpPhone,_tmpEmail,_tmpWebsite,_tmpUsername,_tmpThemeColorHex,_tmpIsDarkTheme,_tmpIsPendingSync);
+            _tmp_1 = _cursor.getInt(_cursorIndexOfIsPublic);
+            _tmpIsPublic = _tmp_1 != 0;
+            final boolean _tmpIsPendingSync;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfIsPendingSync);
+            _tmpIsPendingSync = _tmp_2 != 0;
+            final String _tmpProfilePhotoLocalUri;
+            if (_cursor.isNull(_cursorIndexOfProfilePhotoLocalUri)) {
+              _tmpProfilePhotoLocalUri = null;
+            } else {
+              _tmpProfilePhotoLocalUri = _cursor.getString(_cursorIndexOfProfilePhotoLocalUri);
+            }
+            final String _tmpCompanyLogoLocalUri;
+            if (_cursor.isNull(_cursorIndexOfCompanyLogoLocalUri)) {
+              _tmpCompanyLogoLocalUri = null;
+            } else {
+              _tmpCompanyLogoLocalUri = _cursor.getString(_cursorIndexOfCompanyLogoLocalUri);
+            }
+            final String _tmpProfilePhotoUrl;
+            if (_cursor.isNull(_cursorIndexOfProfilePhotoUrl)) {
+              _tmpProfilePhotoUrl = null;
+            } else {
+              _tmpProfilePhotoUrl = _cursor.getString(_cursorIndexOfProfilePhotoUrl);
+            }
+            final String _tmpCompanyLogoUrl;
+            if (_cursor.isNull(_cursorIndexOfCompanyLogoUrl)) {
+              _tmpCompanyLogoUrl = null;
+            } else {
+              _tmpCompanyLogoUrl = _cursor.getString(_cursorIndexOfCompanyLogoUrl);
+            }
+            _result = new ProfileEntity(_tmpId,_tmpFullName,_tmpJobTitle,_tmpCompany,_tmpPhone,_tmpEmail,_tmpWebsite,_tmpUsername,_tmpThemeColorHex,_tmpIsDarkTheme,_tmpIsPublic,_tmpIsPendingSync,_tmpProfilePhotoLocalUri,_tmpCompanyLogoLocalUri,_tmpProfilePhotoUrl,_tmpCompanyLogoUrl);
           } else {
             _result = null;
           }
@@ -237,7 +292,12 @@ public final class ProfileDao_Impl implements ProfileDao {
           final int _cursorIndexOfUsername = CursorUtil.getColumnIndexOrThrow(_cursor, "username");
           final int _cursorIndexOfThemeColorHex = CursorUtil.getColumnIndexOrThrow(_cursor, "themeColorHex");
           final int _cursorIndexOfIsDarkTheme = CursorUtil.getColumnIndexOrThrow(_cursor, "isDarkTheme");
+          final int _cursorIndexOfIsPublic = CursorUtil.getColumnIndexOrThrow(_cursor, "isPublic");
           final int _cursorIndexOfIsPendingSync = CursorUtil.getColumnIndexOrThrow(_cursor, "isPendingSync");
+          final int _cursorIndexOfProfilePhotoLocalUri = CursorUtil.getColumnIndexOrThrow(_cursor, "profilePhotoLocalUri");
+          final int _cursorIndexOfCompanyLogoLocalUri = CursorUtil.getColumnIndexOrThrow(_cursor, "companyLogoLocalUri");
+          final int _cursorIndexOfProfilePhotoUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "profilePhotoUrl");
+          final int _cursorIndexOfCompanyLogoUrl = CursorUtil.getColumnIndexOrThrow(_cursor, "companyLogoUrl");
           final ProfileEntity _result;
           if (_cursor.moveToFirst()) {
             final String _tmpId;
@@ -298,11 +358,39 @@ public final class ProfileDao_Impl implements ProfileDao {
             final int _tmp;
             _tmp = _cursor.getInt(_cursorIndexOfIsDarkTheme);
             _tmpIsDarkTheme = _tmp != 0;
-            final boolean _tmpIsPendingSync;
+            final boolean _tmpIsPublic;
             final int _tmp_1;
-            _tmp_1 = _cursor.getInt(_cursorIndexOfIsPendingSync);
-            _tmpIsPendingSync = _tmp_1 != 0;
-            _result = new ProfileEntity(_tmpId,_tmpFullName,_tmpJobTitle,_tmpCompany,_tmpPhone,_tmpEmail,_tmpWebsite,_tmpUsername,_tmpThemeColorHex,_tmpIsDarkTheme,_tmpIsPendingSync);
+            _tmp_1 = _cursor.getInt(_cursorIndexOfIsPublic);
+            _tmpIsPublic = _tmp_1 != 0;
+            final boolean _tmpIsPendingSync;
+            final int _tmp_2;
+            _tmp_2 = _cursor.getInt(_cursorIndexOfIsPendingSync);
+            _tmpIsPendingSync = _tmp_2 != 0;
+            final String _tmpProfilePhotoLocalUri;
+            if (_cursor.isNull(_cursorIndexOfProfilePhotoLocalUri)) {
+              _tmpProfilePhotoLocalUri = null;
+            } else {
+              _tmpProfilePhotoLocalUri = _cursor.getString(_cursorIndexOfProfilePhotoLocalUri);
+            }
+            final String _tmpCompanyLogoLocalUri;
+            if (_cursor.isNull(_cursorIndexOfCompanyLogoLocalUri)) {
+              _tmpCompanyLogoLocalUri = null;
+            } else {
+              _tmpCompanyLogoLocalUri = _cursor.getString(_cursorIndexOfCompanyLogoLocalUri);
+            }
+            final String _tmpProfilePhotoUrl;
+            if (_cursor.isNull(_cursorIndexOfProfilePhotoUrl)) {
+              _tmpProfilePhotoUrl = null;
+            } else {
+              _tmpProfilePhotoUrl = _cursor.getString(_cursorIndexOfProfilePhotoUrl);
+            }
+            final String _tmpCompanyLogoUrl;
+            if (_cursor.isNull(_cursorIndexOfCompanyLogoUrl)) {
+              _tmpCompanyLogoUrl = null;
+            } else {
+              _tmpCompanyLogoUrl = _cursor.getString(_cursorIndexOfCompanyLogoUrl);
+            }
+            _result = new ProfileEntity(_tmpId,_tmpFullName,_tmpJobTitle,_tmpCompany,_tmpPhone,_tmpEmail,_tmpWebsite,_tmpUsername,_tmpThemeColorHex,_tmpIsDarkTheme,_tmpIsPublic,_tmpIsPendingSync,_tmpProfilePhotoLocalUri,_tmpCompanyLogoLocalUri,_tmpProfilePhotoUrl,_tmpCompanyLogoUrl);
           } else {
             _result = null;
           }

@@ -1,12 +1,10 @@
 package com.tapcard.app.data.remote;
 
 @kotlinx.serialization.Serializable
-@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000>\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0002\b\t\n\u0002\u0010\u000b\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0002\b,\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0087\b\u0018\u0000 F2\u00020\u0001:\u0002EFB\u009d\u0001\b\u0017\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\n\b\u0001\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u0007\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\b\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\t\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\n\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u000b\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\f\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\r\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u000e\u001a\u0004\u0018\u00010\u000f\u0012\n\b\u0001\u0010\u0010\u001a\u0004\u0018\u00010\u000f\u0012\b\u0010\u0011\u001a\u0004\u0018\u00010\u0012\u00a2\u0006\u0002\u0010\u0013Bo\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\u0006\u0010\u0006\u001a\u00020\u0005\u0012\b\u0010\u0007\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\b\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\t\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\n\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\u000b\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\f\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\r\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\u000e\u001a\u0004\u0018\u00010\u000f\u0012\b\u0010\u0010\u001a\u0004\u0018\u00010\u000f\u00a2\u0006\u0002\u0010\u0014J\t\u0010-\u001a\u00020\u0005H\u00c6\u0003J\u0010\u0010.\u001a\u0004\u0018\u00010\u000fH\u00c6\u0003\u00a2\u0006\u0002\u0010 J\u0010\u0010/\u001a\u0004\u0018\u00010\u000fH\u00c6\u0003\u00a2\u0006\u0002\u0010 J\t\u00100\u001a\u00020\u0005H\u00c6\u0003J\u000b\u00101\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00102\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00103\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00104\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00105\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00106\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00107\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u008e\u0001\u00108\u001a\u00020\u00002\b\b\u0002\u0010\u0004\u001a\u00020\u00052\b\b\u0002\u0010\u0006\u001a\u00020\u00052\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\b\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\t\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\n\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u000b\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\f\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\r\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u000e\u001a\u0004\u0018\u00010\u000f2\n\b\u0002\u0010\u0010\u001a\u0004\u0018\u00010\u000fH\u00c6\u0001\u00a2\u0006\u0002\u00109J\u0013\u0010:\u001a\u00020\u000f2\b\u0010;\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010<\u001a\u00020\u0003H\u00d6\u0001J\t\u0010=\u001a\u00020\u0005H\u00d6\u0001J!\u0010>\u001a\u00020?2\u0006\u0010@\u001a\u00020\u00002\u0006\u0010A\u001a\u00020B2\u0006\u0010C\u001a\u00020DH\u00c7\u0001R\u001e\u0010\t\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u0015\u0010\u0016\u001a\u0004\b\u0017\u0010\u0018R\u001e\u0010\u000b\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u0019\u0010\u0016\u001a\u0004\b\u001a\u0010\u0018R\u001e\u0010\u0007\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u001b\u0010\u0016\u001a\u0004\b\u001c\u0010\u0018R\u001c\u0010\u0004\u001a\u00020\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u001d\u0010\u0016\u001a\u0004\b\u001e\u0010\u0018R \u0010\u000e\u001a\u0004\u0018\u00010\u000f8\u0006X\u0087\u0004\u00a2\u0006\u0010\n\u0002\u0010!\u0012\u0004\b\u001f\u0010\u0016\u001a\u0004\b\u000e\u0010 R \u0010\u0010\u001a\u0004\u0018\u00010\u000f8\u0006X\u0087\u0004\u00a2\u0006\u0010\n\u0002\u0010!\u0012\u0004\b\"\u0010\u0016\u001a\u0004\b\u0010\u0010 R\u001e\u0010\b\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b#\u0010\u0016\u001a\u0004\b$\u0010\u0018R\u001e\u0010\n\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b%\u0010\u0016\u001a\u0004\b&\u0010\u0018R\u001e\u0010\r\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\'\u0010\u0016\u001a\u0004\b(\u0010\u0018R\u001c\u0010\u0006\u001a\u00020\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b)\u0010\u0016\u001a\u0004\b*\u0010\u0018R\u001e\u0010\f\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b+\u0010\u0016\u001a\u0004\b,\u0010\u0018\u00a8\u0006G"}, d2 = {"Lcom/tapcard/app/data/remote/RemoteProfileDto;", "", "seen1", "", "id", "", "username", "fullName", "jobTitle", "company", "phone", "email", "website", "themeColorHex", "isDarkTheme", "", "isPublic", "serializationConstructorMarker", "Lkotlinx/serialization/internal/SerializationConstructorMarker;", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)V", "getCompany$annotations", "()V", "getCompany", "()Ljava/lang/String;", "getEmail$annotations", "getEmail", "getFullName$annotations", "getFullName", "getId$annotations", "getId", "isDarkTheme$annotations", "()Ljava/lang/Boolean;", "Ljava/lang/Boolean;", "isPublic$annotations", "getJobTitle$annotations", "getJobTitle", "getPhone$annotations", "getPhone", "getThemeColorHex$annotations", "getThemeColorHex", "getUsername$annotations", "getUsername", "getWebsite$annotations", "getWebsite", "component1", "component10", "component11", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/Boolean;Ljava/lang/Boolean;)Lcom/tapcard/app/data/remote/RemoteProfileDto;", "equals", "other", "hashCode", "toString", "write$Self", "", "self", "output", "Lkotlinx/serialization/encoding/CompositeEncoder;", "serialDesc", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "$serializer", "Companion", "app_debug"})
+@kotlin.Metadata(mv = {1, 9, 0}, k = 1, xi = 48, d1 = {"\u0000>\n\u0002\u0018\u0002\n\u0002\u0010\u0000\n\u0000\n\u0002\u0010\b\n\u0000\n\u0002\u0010\u000e\n\u0002\b\t\n\u0002\u0010\u000b\n\u0002\b\u0004\n\u0002\u0018\u0002\n\u0002\b0\n\u0002\u0010\u0002\n\u0002\b\u0002\n\u0002\u0018\u0002\n\u0000\n\u0002\u0018\u0002\n\u0002\b\u0003\b\u0087\b\u0018\u0000 L2\u00020\u0001:\u0002KLB\u00b1\u0001\b\u0017\u0012\u0006\u0010\u0002\u001a\u00020\u0003\u0012\n\b\u0001\u0010\u0004\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u0007\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\b\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\t\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\n\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u000b\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\f\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\r\u001a\u0004\u0018\u00010\u0005\u0012\b\b\u0001\u0010\u000e\u001a\u00020\u000f\u0012\b\b\u0001\u0010\u0010\u001a\u00020\u000f\u0012\n\b\u0001\u0010\u0011\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0001\u0010\u0012\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\u0013\u001a\u0004\u0018\u00010\u0014\u00a2\u0006\u0002\u0010\u0015B\u0089\u0001\u0012\u0006\u0010\u0004\u001a\u00020\u0005\u0012\b\u0010\u0006\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\u0007\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\b\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\t\u001a\u0004\u0018\u00010\u0005\u0012\b\u0010\n\u001a\u0004\u0018\u00010\u0005\u0012\u0006\u0010\u000b\u001a\u00020\u0005\u0012\b\u0010\f\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0002\u0010\r\u001a\u0004\u0018\u00010\u0005\u0012\b\b\u0002\u0010\u000e\u001a\u00020\u000f\u0012\b\b\u0002\u0010\u0010\u001a\u00020\u000f\u0012\n\b\u0002\u0010\u0011\u001a\u0004\u0018\u00010\u0005\u0012\n\b\u0002\u0010\u0012\u001a\u0004\u0018\u00010\u0005\u00a2\u0006\u0002\u0010\u0016J\t\u00102\u001a\u00020\u0005H\u00c6\u0003J\t\u00103\u001a\u00020\u000fH\u00c6\u0003J\t\u00104\u001a\u00020\u000fH\u00c6\u0003J\u000b\u00105\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00106\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00107\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00108\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u00109\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u0010:\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u0010;\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\t\u0010<\u001a\u00020\u0005H\u00c6\u0003J\u000b\u0010=\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u000b\u0010>\u001a\u0004\u0018\u00010\u0005H\u00c6\u0003J\u009d\u0001\u0010?\u001a\u00020\u00002\b\b\u0002\u0010\u0004\u001a\u00020\u00052\n\b\u0002\u0010\u0006\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u0007\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\b\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\t\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\n\u001a\u0004\u0018\u00010\u00052\b\b\u0002\u0010\u000b\u001a\u00020\u00052\n\b\u0002\u0010\f\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\r\u001a\u0004\u0018\u00010\u00052\b\b\u0002\u0010\u000e\u001a\u00020\u000f2\b\b\u0002\u0010\u0010\u001a\u00020\u000f2\n\b\u0002\u0010\u0011\u001a\u0004\u0018\u00010\u00052\n\b\u0002\u0010\u0012\u001a\u0004\u0018\u00010\u0005H\u00c6\u0001J\u0013\u0010@\u001a\u00020\u000f2\b\u0010A\u001a\u0004\u0018\u00010\u0001H\u00d6\u0003J\t\u0010B\u001a\u00020\u0003H\u00d6\u0001J\t\u0010C\u001a\u00020\u0005H\u00d6\u0001J!\u0010D\u001a\u00020E2\u0006\u0010F\u001a\u00020\u00002\u0006\u0010G\u001a\u00020H2\u0006\u0010I\u001a\u00020JH\u00c7\u0001R\u001e\u0010\b\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u0017\u0010\u0018\u001a\u0004\b\u0019\u0010\u001aR\u001e\u0010\u0012\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u001b\u0010\u0018\u001a\u0004\b\u001c\u0010\u001aR\u001e\u0010\n\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u001d\u0010\u0018\u001a\u0004\b\u001e\u0010\u001aR\u001e\u0010\u0006\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b\u001f\u0010\u0018\u001a\u0004\b \u0010\u001aR\u001c\u0010\u0004\u001a\u00020\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b!\u0010\u0018\u001a\u0004\b\"\u0010\u001aR\u001c\u0010\u000e\u001a\u00020\u000f8\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b#\u0010\u0018\u001a\u0004\b\u000e\u0010$R\u001c\u0010\u0010\u001a\u00020\u000f8\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b%\u0010\u0018\u001a\u0004\b\u0010\u0010$R\u001e\u0010\u0007\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b&\u0010\u0018\u001a\u0004\b\'\u0010\u001aR\u001e\u0010\t\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b(\u0010\u0018\u001a\u0004\b)\u0010\u001aR\u001e\u0010\u0011\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b*\u0010\u0018\u001a\u0004\b+\u0010\u001aR\u001e\u0010\r\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b,\u0010\u0018\u001a\u0004\b-\u0010\u001aR\u001c\u0010\u000b\u001a\u00020\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b.\u0010\u0018\u001a\u0004\b/\u0010\u001aR\u001e\u0010\f\u001a\u0004\u0018\u00010\u00058\u0006X\u0087\u0004\u00a2\u0006\u000e\n\u0000\u0012\u0004\b0\u0010\u0018\u001a\u0004\b1\u0010\u001a\u00a8\u0006M"}, d2 = {"Lcom/tapcard/app/data/remote/RemoteProfileDto;", "", "seen1", "", "id", "", "fullName", "jobTitle", "company", "phone", "email", "username", "website", "themeColorHex", "isDarkTheme", "", "isPublic", "profilePhotoUrl", "companyLogoUrl", "serializationConstructorMarker", "Lkotlinx/serialization/internal/SerializationConstructorMarker;", "(ILjava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;Lkotlinx/serialization/internal/SerializationConstructorMarker;)V", "(Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZZLjava/lang/String;Ljava/lang/String;)V", "getCompany$annotations", "()V", "getCompany", "()Ljava/lang/String;", "getCompanyLogoUrl$annotations", "getCompanyLogoUrl", "getEmail$annotations", "getEmail", "getFullName$annotations", "getFullName", "getId$annotations", "getId", "isDarkTheme$annotations", "()Z", "isPublic$annotations", "getJobTitle$annotations", "getJobTitle", "getPhone$annotations", "getPhone", "getProfilePhotoUrl$annotations", "getProfilePhotoUrl", "getThemeColorHex$annotations", "getThemeColorHex", "getUsername$annotations", "getUsername", "getWebsite$annotations", "getWebsite", "component1", "component10", "component11", "component12", "component13", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "component9", "copy", "equals", "other", "hashCode", "toString", "write$Self", "", "self", "output", "Lkotlinx/serialization/encoding/CompositeEncoder;", "serialDesc", "Lkotlinx/serialization/descriptors/SerialDescriptor;", "$serializer", "Companion", "app_debug"})
 public final class RemoteProfileDto {
     @org.jetbrains.annotations.NotNull
     private final java.lang.String id = null;
-    @org.jetbrains.annotations.NotNull
-    private final java.lang.String username = null;
     @org.jetbrains.annotations.Nullable
     private final java.lang.String fullName = null;
     @org.jetbrains.annotations.Nullable
@@ -17,29 +15,33 @@ public final class RemoteProfileDto {
     private final java.lang.String phone = null;
     @org.jetbrains.annotations.Nullable
     private final java.lang.String email = null;
+    @org.jetbrains.annotations.NotNull
+    private final java.lang.String username = null;
     @org.jetbrains.annotations.Nullable
     private final java.lang.String website = null;
     @org.jetbrains.annotations.Nullable
     private final java.lang.String themeColorHex = null;
+    private final boolean isDarkTheme = false;
+    private final boolean isPublic = false;
     @org.jetbrains.annotations.Nullable
-    private final java.lang.Boolean isDarkTheme = null;
+    private final java.lang.String profilePhotoUrl = null;
     @org.jetbrains.annotations.Nullable
-    private final java.lang.Boolean isPublic = null;
+    private final java.lang.String companyLogoUrl = null;
     @org.jetbrains.annotations.NotNull
     public static final com.tapcard.app.data.remote.RemoteProfileDto.Companion Companion = null;
     
     public RemoteProfileDto(@org.jetbrains.annotations.NotNull
-    java.lang.String id, @org.jetbrains.annotations.NotNull
-    java.lang.String username, @org.jetbrains.annotations.Nullable
+    java.lang.String id, @org.jetbrains.annotations.Nullable
     java.lang.String fullName, @org.jetbrains.annotations.Nullable
     java.lang.String jobTitle, @org.jetbrains.annotations.Nullable
     java.lang.String company, @org.jetbrains.annotations.Nullable
     java.lang.String phone, @org.jetbrains.annotations.Nullable
-    java.lang.String email, @org.jetbrains.annotations.Nullable
+    java.lang.String email, @org.jetbrains.annotations.NotNull
+    java.lang.String username, @org.jetbrains.annotations.Nullable
     java.lang.String website, @org.jetbrains.annotations.Nullable
-    java.lang.String themeColorHex, @org.jetbrains.annotations.Nullable
-    java.lang.Boolean isDarkTheme, @org.jetbrains.annotations.Nullable
-    java.lang.Boolean isPublic) {
+    java.lang.String themeColorHex, boolean isDarkTheme, boolean isPublic, @org.jetbrains.annotations.Nullable
+    java.lang.String profilePhotoUrl, @org.jetbrains.annotations.Nullable
+    java.lang.String companyLogoUrl) {
         super();
     }
     
@@ -51,16 +53,6 @@ public final class RemoteProfileDto {
     @kotlinx.serialization.SerialName(value = "id")
     @java.lang.Deprecated
     public static void getId$annotations() {
-    }
-    
-    @org.jetbrains.annotations.NotNull
-    public final java.lang.String getUsername() {
-        return null;
-    }
-    
-    @kotlinx.serialization.SerialName(value = "username")
-    @java.lang.Deprecated
-    public static void getUsername$annotations() {
     }
     
     @org.jetbrains.annotations.Nullable
@@ -113,6 +105,16 @@ public final class RemoteProfileDto {
     public static void getEmail$annotations() {
     }
     
+    @org.jetbrains.annotations.NotNull
+    public final java.lang.String getUsername() {
+        return null;
+    }
+    
+    @kotlinx.serialization.SerialName(value = "username")
+    @java.lang.Deprecated
+    public static void getUsername$annotations() {
+    }
+    
     @org.jetbrains.annotations.Nullable
     public final java.lang.String getWebsite() {
         return null;
@@ -133,9 +135,8 @@ public final class RemoteProfileDto {
     public static void getThemeColorHex$annotations() {
     }
     
-    @org.jetbrains.annotations.Nullable
-    public final java.lang.Boolean isDarkTheme() {
-        return null;
+    public final boolean isDarkTheme() {
+        return false;
     }
     
     @kotlinx.serialization.SerialName(value = "is_dark_theme")
@@ -143,9 +144,8 @@ public final class RemoteProfileDto {
     public static void isDarkTheme$annotations() {
     }
     
-    @org.jetbrains.annotations.Nullable
-    public final java.lang.Boolean isPublic() {
-        return null;
+    public final boolean isPublic() {
+        return false;
     }
     
     @kotlinx.serialization.SerialName(value = "is_public")
@@ -153,22 +153,50 @@ public final class RemoteProfileDto {
     public static void isPublic$annotations() {
     }
     
+    @org.jetbrains.annotations.Nullable
+    public final java.lang.String getProfilePhotoUrl() {
+        return null;
+    }
+    
+    @kotlinx.serialization.SerialName(value = "profile_photo_url")
+    @java.lang.Deprecated
+    public static void getProfilePhotoUrl$annotations() {
+    }
+    
+    @org.jetbrains.annotations.Nullable
+    public final java.lang.String getCompanyLogoUrl() {
+        return null;
+    }
+    
+    @kotlinx.serialization.SerialName(value = "company_logo_url")
+    @java.lang.Deprecated
+    public static void getCompanyLogoUrl$annotations() {
+    }
+    
     @org.jetbrains.annotations.NotNull
     public final java.lang.String component1() {
         return null;
     }
     
+    public final boolean component10() {
+        return false;
+    }
+    
+    public final boolean component11() {
+        return false;
+    }
+    
     @org.jetbrains.annotations.Nullable
-    public final java.lang.Boolean component10() {
+    public final java.lang.String component12() {
         return null;
     }
     
     @org.jetbrains.annotations.Nullable
-    public final java.lang.Boolean component11() {
+    public final java.lang.String component13() {
         return null;
     }
     
-    @org.jetbrains.annotations.NotNull
+    @org.jetbrains.annotations.Nullable
     public final java.lang.String component2() {
         return null;
     }
@@ -193,7 +221,7 @@ public final class RemoteProfileDto {
         return null;
     }
     
-    @org.jetbrains.annotations.Nullable
+    @org.jetbrains.annotations.NotNull
     public final java.lang.String component7() {
         return null;
     }
@@ -210,17 +238,17 @@ public final class RemoteProfileDto {
     
     @org.jetbrains.annotations.NotNull
     public final com.tapcard.app.data.remote.RemoteProfileDto copy(@org.jetbrains.annotations.NotNull
-    java.lang.String id, @org.jetbrains.annotations.NotNull
-    java.lang.String username, @org.jetbrains.annotations.Nullable
+    java.lang.String id, @org.jetbrains.annotations.Nullable
     java.lang.String fullName, @org.jetbrains.annotations.Nullable
     java.lang.String jobTitle, @org.jetbrains.annotations.Nullable
     java.lang.String company, @org.jetbrains.annotations.Nullable
     java.lang.String phone, @org.jetbrains.annotations.Nullable
-    java.lang.String email, @org.jetbrains.annotations.Nullable
+    java.lang.String email, @org.jetbrains.annotations.NotNull
+    java.lang.String username, @org.jetbrains.annotations.Nullable
     java.lang.String website, @org.jetbrains.annotations.Nullable
-    java.lang.String themeColorHex, @org.jetbrains.annotations.Nullable
-    java.lang.Boolean isDarkTheme, @org.jetbrains.annotations.Nullable
-    java.lang.Boolean isPublic) {
+    java.lang.String themeColorHex, boolean isDarkTheme, boolean isPublic, @org.jetbrains.annotations.Nullable
+    java.lang.String profilePhotoUrl, @org.jetbrains.annotations.Nullable
+    java.lang.String companyLogoUrl) {
         return null;
     }
     

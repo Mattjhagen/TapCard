@@ -119,6 +119,7 @@ fun DashboardScreen(
             // Sync Status
             val statusText = when(syncStatus) {
                 SyncStatus.SAVED_LOCALLY -> "Offline: Saved Locally"
+                SyncStatus.UPLOADING -> "Uploading image..."
                 SyncStatus.SYNCING -> "Syncing with Supabase..."
                 SyncStatus.SYNCED -> "Synced to Cloud"
                 SyncStatus.SYNC_FAILED -> "Cloud Sync Failed"

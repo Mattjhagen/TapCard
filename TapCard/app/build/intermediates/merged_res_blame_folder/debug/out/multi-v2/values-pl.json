@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tapcard.app-mergeDebugResources-57:/values-pl/values-pl.xml",
+            "outputFile": "com.tapcard.app-mergeDebugResources-60:/values-pl/values-pl.xml",
             "map": [
                 {
                     "source": "/Users/matty/.gradle/caches/transforms-3/89c23b964ebccf02fbd47317366ab45e/transformed/jetified-ui-release/res/values-pl/values-pl.xml",

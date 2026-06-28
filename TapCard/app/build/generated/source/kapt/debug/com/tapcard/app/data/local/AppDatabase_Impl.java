@@ -32,9 +32,9 @@ public final class AppDatabase_Impl extends AppDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(1) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `profile` (`id` TEXT NOT NULL, `fullName` TEXT NOT NULL, `jobTitle` TEXT NOT NULL, `company` TEXT NOT NULL, `phone` TEXT NOT NULL, `email` TEXT NOT NULL, `website` TEXT NOT NULL, `username` TEXT NOT NULL, `themeColorHex` TEXT NOT NULL, `isDarkTheme` INTEGER NOT NULL, `isPendingSync` INTEGER NOT NULL, PRIMARY KEY(`id`))");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `profile` (`id` TEXT NOT NULL, `fullName` TEXT NOT NULL, `jobTitle` TEXT NOT NULL, `company` TEXT NOT NULL, `phone` TEXT NOT NULL, `email` TEXT NOT NULL, `website` TEXT NOT NULL, `username` TEXT NOT NULL, `themeColorHex` TEXT NOT NULL, `isDarkTheme` INTEGER NOT NULL, `isPublic` INTEGER NOT NULL, `isPendingSync` INTEGER NOT NULL, `profilePhotoLocalUri` TEXT, `companyLogoLocalUri` TEXT, `profilePhotoUrl` TEXT, `companyLogoUrl` TEXT, PRIMARY KEY(`id`))");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '282253c0f736521ba58d819ed5a756cc')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'c03d2c2bbc97a3b743bbb50c7d8752ea')");
       }
 
       @Override
@@ -83,7 +83,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsProfile = new HashMap<String, TableInfo.Column>(11);
+        final HashMap<String, TableInfo.Column> _columnsProfile = new HashMap<String, TableInfo.Column>(16);
         _columnsProfile.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProfile.put("fullName", new TableInfo.Column("fullName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProfile.put("jobTitle", new TableInfo.Column("jobTitle", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -94,7 +94,12 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsProfile.put("username", new TableInfo.Column("username", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProfile.put("themeColorHex", new TableInfo.Column("themeColorHex", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProfile.put("isDarkTheme", new TableInfo.Column("isDarkTheme", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProfile.put("isPublic", new TableInfo.Column("isPublic", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsProfile.put("isPendingSync", new TableInfo.Column("isPendingSync", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProfile.put("profilePhotoLocalUri", new TableInfo.Column("profilePhotoLocalUri", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProfile.put("companyLogoLocalUri", new TableInfo.Column("companyLogoLocalUri", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProfile.put("profilePhotoUrl", new TableInfo.Column("profilePhotoUrl", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsProfile.put("companyLogoUrl", new TableInfo.Column("companyLogoUrl", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysProfile = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesProfile = new HashSet<TableInfo.Index>(0);
         final TableInfo _infoProfile = new TableInfo("profile", _columnsProfile, _foreignKeysProfile, _indicesProfile);
@@ -106,7 +111,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "282253c0f736521ba58d819ed5a756cc", "c26dc686921340d6aa37d8ee8dc173b7");
+    }, "c03d2c2bbc97a3b743bbb50c7d8752ea", "8b7191ce7af6893e3aed7c6ae153e5fb");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

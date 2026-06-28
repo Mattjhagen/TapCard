@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.tapcard.app-mergeDebugResources-57:/values-zh-rHK/values-zh-rHK.xml",
+            "outputFile": "com.tapcard.app-mergeDebugResources-60:/values-zh-rHK/values-zh-rHK.xml",
             "map": [
                 {
                     "source": "/Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/res/values-zh-rHK/values.xml",

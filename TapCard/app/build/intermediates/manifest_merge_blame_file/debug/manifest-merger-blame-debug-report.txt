@@ -111,114 +111,121 @@
 66                android:resource="@xml/provider_paths" />
 66-->/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/src/main/AndroidManifest.xml:37:17-55
 67        </provider>
-68        <provider
-68-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:9:9-17:20
-69            android:name="androidx.startup.InitializationProvider"
-69-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:10:13-67
-70            android:authorities="com.tapcard.app.androidx-startup"
-70-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:11:13-68
-71            android:exported="false" >
-71-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:12:13-37
-72            <meta-data
-72-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:14:13-16:52
-73                android:name="io.github.jan.supabase.gotrue.SupabaseInitializer"
-73-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:15:17-81
-74                android:value="androidx.startup" />
-74-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.0.0] /Users/matty/.gradle/caches/transforms-3/d5d85692564d00adc762843b8347ec46/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:16:17-49
-75            <meta-data
-75-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/7ee0b4d1465d9d876b6dc1855299ee57/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
-76                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-76-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/7ee0b4d1465d9d876b6dc1855299ee57/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:30:17-75
-77                android:value="androidx.startup" />
-77-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/7ee0b4d1465d9d876b6dc1855299ee57/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:31:17-49
-78            <meta-data
-78-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/matty/.gradle/caches/transforms-3/a95ff841961e8a013e67e98a5f40dd39/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:29:13-31:52
-79                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-79-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/matty/.gradle/caches/transforms-3/a95ff841961e8a013e67e98a5f40dd39/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:30:17-78
-80                android:value="androidx.startup" />
-80-->[androidx.lifecycle:lifecycle-process:2.6.2] /Users/matty/.gradle/caches/transforms-3/a95ff841961e8a013e67e98a5f40dd39/transformed/jetified-lifecycle-process-2.6.2/AndroidManifest.xml:31:17-49
-81            <meta-data
-81-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:29:13-31:52
-82                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-82-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:30:17-85
-83                android:value="androidx.startup" />
-83-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:31:17-49
-84            <meta-data
-84-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] /Users/matty/.gradle/caches/transforms-3/0f05fa699c6f41bd2e6a05c427bcea3c/transformed/jetified-multiplatform-settings-no-arg-debug/AndroidManifest.xml:29:13-31:52
-85                android:name="com.russhwolf.settings.SettingsInitializer"
-85-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] /Users/matty/.gradle/caches/transforms-3/0f05fa699c6f41bd2e6a05c427bcea3c/transformed/jetified-multiplatform-settings-no-arg-debug/AndroidManifest.xml:30:17-74
-86                android:value="androidx.startup" />
-86-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] /Users/matty/.gradle/caches/transforms-3/0f05fa699c6f41bd2e6a05c427bcea3c/transformed/jetified-multiplatform-settings-no-arg-debug/AndroidManifest.xml:31:17-49
-87        </provider>
-88
-89        <service
-89-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
-90            android:name="androidx.room.MultiInstanceInvalidationService"
-90-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
-91            android:directBootAware="true"
-91-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
-92            android:exported="false" /> <!-- Needs to be explicitly declared on P+ -->
-92-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
-93        <uses-library
-93-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/c07fb1c1e8c55e9903f14c1cce4485b8/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:39:9-41:40
-94            android:name="org.apache.http.legacy"
-94-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/c07fb1c1e8c55e9903f14c1cce4485b8/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:40:13-50
-95            android:required="false" />
-95-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/c07fb1c1e8c55e9903f14c1cce4485b8/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:41:13-37
-96
-97        <activity
-97-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
-98            android:name="com.google.android.gms.common.api.GoogleApiActivity"
-98-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
-99            android:exported="false"
-99-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
-100            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-100-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
-101
-102        <meta-data
-102-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
-103            android:name="com.google.android.gms.version"
-103-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
-104            android:value="@integer/google_play_services_version" />
-104-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
-105
-106        <receiver
-106-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:34:9-52:20
-107            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-107-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:35:13-76
-108            android:directBootAware="false"
-108-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:36:13-44
-109            android:enabled="true"
-109-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:37:13-35
-110            android:exported="true"
-110-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:38:13-36
-111            android:permission="android.permission.DUMP" >
-111-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:39:13-57
-112            <intent-filter>
-112-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:40:13-42:29
-113                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:17-91
-113-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:41:25-88
-114            </intent-filter>
-115            <intent-filter>
-115-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:43:13-45:29
-116                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:17-85
-116-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:44:25-82
-117            </intent-filter>
-118            <intent-filter>
-118-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:46:13-48:29
-119                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:17-88
-119-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:47:25-85
-120            </intent-filter>
-121            <intent-filter>
-121-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:49:13-51:29
-122                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-122-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:17-95
-122-->[androidx.profileinstaller:profileinstaller:1.3.0] /Users/matty/.gradle/caches/transforms-3/c70372fa345556289f97b3023d0da322/transformed/jetified-profileinstaller-1.3.0/AndroidManifest.xml:50:25-92
-123            </intent-filter>
-124        </receiver>
-125    </application>
-126
-127</manifest>
+68
+69        <service
+69-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:24:9-28:63
+70            android:name="androidx.room.MultiInstanceInvalidationService"
+70-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:25:13-74
+71            android:directBootAware="true"
+71-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:26:13-43
+72            android:exported="false" /> <!-- Needs to be explicitly declared on P+ -->
+72-->[androidx.room:room-runtime:2.6.1] /Users/matty/.gradle/caches/transforms-3/32e1d63ffe7c06ed1c0577ebfba45b4f/transformed/room-runtime-2.6.1/AndroidManifest.xml:27:13-37
+73        <uses-library
+73-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/c07fb1c1e8c55e9903f14c1cce4485b8/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:39:9-41:40
+74            android:name="org.apache.http.legacy"
+74-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/c07fb1c1e8c55e9903f14c1cce4485b8/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:40:13-50
+75            android:required="false" />
+75-->[com.google.android.gms:play-services-maps:18.0.2] /Users/matty/.gradle/caches/transforms-3/c07fb1c1e8c55e9903f14c1cce4485b8/transformed/jetified-play-services-maps-18.0.2/AndroidManifest.xml:41:13-37
+76
+77        <activity
+77-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:9-22:45
+78            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+78-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:20:19-85
+79            android:exported="false"
+79-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:22:19-43
+80            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+80-->[com.google.android.gms:play-services-base:18.0.1] /Users/matty/.gradle/caches/transforms-3/45a1eb2aa103ccd87ba8bcfa43ce1d11/transformed/jetified-play-services-base-18.0.1/AndroidManifest.xml:21:19-78
+81
+82        <meta-data
+82-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:21:9-23:69
+83            android:name="com.google.android.gms.version"
+83-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:22:13-58
+84            android:value="@integer/google_play_services_version" />
+84-->[com.google.android.gms:play-services-basement:18.0.0] /Users/matty/.gradle/caches/transforms-3/88b482535861b4abd0378f6b17039d9c/transformed/jetified-play-services-basement-18.0.0/AndroidManifest.xml:23:13-66
+85
+86        <provider
+86-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:9:9-17:20
+87            android:name="androidx.startup.InitializationProvider"
+87-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:10:13-67
+88            android:authorities="com.tapcard.app.androidx-startup"
+88-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:11:13-68
+89            android:exported="false" >
+89-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:12:13-37
+90            <meta-data
+90-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:14:13-16:52
+91                android:name="io.github.jan.supabase.storage.SupabaseInitializer"
+91-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:15:17-82
+92                android:value="androidx.startup" />
+92-->[io.github.jan-tennert.supabase:storage-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/02a0c3de207f1339d988e459bb348717/transformed/jetified-storage-kt-debug/AndroidManifest.xml:16:17-49
+93            <meta-data
+93-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/2eda1288a7418d459430788802d74114/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:14:13-16:52
+94                android:name="io.github.jan.supabase.gotrue.SupabaseInitializer"
+94-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/2eda1288a7418d459430788802d74114/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:15:17-81
+95                android:value="androidx.startup" />
+95-->[io.github.jan-tennert.supabase:gotrue-kt-android-debug:2.1.3] /Users/matty/.gradle/caches/transforms-3/2eda1288a7418d459430788802d74114/transformed/jetified-gotrue-kt-debug/AndroidManifest.xml:16:17-49
+96            <meta-data
+96-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/7ee0b4d1465d9d876b6dc1855299ee57/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:29:13-31:52
+97                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+97-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/7ee0b4d1465d9d876b6dc1855299ee57/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:30:17-75
+98                android:value="androidx.startup" />
+98-->[androidx.emoji2:emoji2:1.4.0] /Users/matty/.gradle/caches/transforms-3/7ee0b4d1465d9d876b6dc1855299ee57/transformed/jetified-emoji2-1.4.0/AndroidManifest.xml:31:17-49
+99            <meta-data
+99-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/matty/.gradle/caches/transforms-3/2fd8bc14f743e836e5b6b6b574542304/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:29:13-31:52
+100                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+100-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/matty/.gradle/caches/transforms-3/2fd8bc14f743e836e5b6b6b574542304/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:30:17-78
+101                android:value="androidx.startup" />
+101-->[androidx.lifecycle:lifecycle-process:2.7.0] /Users/matty/.gradle/caches/transforms-3/2fd8bc14f743e836e5b6b6b574542304/transformed/jetified-lifecycle-process-2.7.0/AndroidManifest.xml:31:17-49
+102            <meta-data
+102-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] /Users/matty/.gradle/caches/transforms-3/0f05fa699c6f41bd2e6a05c427bcea3c/transformed/jetified-multiplatform-settings-no-arg-debug/AndroidManifest.xml:29:13-31:52
+103                android:name="com.russhwolf.settings.SettingsInitializer"
+103-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] /Users/matty/.gradle/caches/transforms-3/0f05fa699c6f41bd2e6a05c427bcea3c/transformed/jetified-multiplatform-settings-no-arg-debug/AndroidManifest.xml:30:17-74
+104                android:value="androidx.startup" />
+104-->[com.russhwolf:multiplatform-settings-no-arg-android-debug:1.1.1] /Users/matty/.gradle/caches/transforms-3/0f05fa699c6f41bd2e6a05c427bcea3c/transformed/jetified-multiplatform-settings-no-arg-debug/AndroidManifest.xml:31:17-49
+105            <meta-data
+105-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:29:13-31:52
+106                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+106-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:30:17-85
+107                android:value="androidx.startup" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:31:17-49
+108        </provider>
+109
+110        <receiver
+110-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:34:9-52:20
+111            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+111-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:35:13-76
+112            android:directBootAware="false"
+112-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:36:13-44
+113            android:enabled="true"
+113-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:37:13-35
+114            android:exported="true"
+114-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:38:13-36
+115            android:permission="android.permission.DUMP" >
+115-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:39:13-57
+116            <intent-filter>
+116-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:40:13-42:29
+117                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:17-91
+117-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:41:25-88
+118            </intent-filter>
+119            <intent-filter>
+119-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:43:13-45:29
+120                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:17-85
+120-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:44:25-82
+121            </intent-filter>
+122            <intent-filter>
+122-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:46:13-48:29
+123                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:17-88
+123-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:47:25-85
+124            </intent-filter>
+125            <intent-filter>
+125-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:49:13-51:29
+126                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:17-95
+126-->[androidx.profileinstaller:profileinstaller:1.3.1] /Users/matty/.gradle/caches/transforms-3/39c038e2f4375291e77c7bc9b1300d43/transformed/jetified-profileinstaller-1.3.1/AndroidManifest.xml:50:25-92
+127            </intent-filter>
+128        </receiver>
+129    </application>
+130
+131</manifest>

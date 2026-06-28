@@ -11,5 +11,10 @@ data class Profile(
     val username: String = "",
     val themeColorHex: String = "#000000",
     val isDarkTheme: Boolean = true,
-    val isPendingSync: Boolean = false
+    val isPublic: Boolean = true,
+    val isPendingSync: Boolean = false,
+    val profilePhotoLocalUri: String? = null,
+    val companyLogoLocalUri: String? = null,
+    val profilePhotoUrl: String? = null,
+    val companyLogoUrl: String? = null
 )

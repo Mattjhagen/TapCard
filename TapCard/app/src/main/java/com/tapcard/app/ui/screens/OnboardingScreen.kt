@@ -11,6 +11,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.tapcard.app.ui.viewmodel.ProfileViewModel
 import com.tapcard.app.ui.viewmodel.UsernameValidationState
 
@@ -29,6 +31,23 @@ fun OnboardingScreen(
     var email by remember { mutableStateOf(profile.email) }
     var website by remember { mutableStateOf(profile.website) }
     var username by remember { mutableStateOf(profile.username) }
+    
+    var profilePhotoUri by remember { mutableStateOf(profile.profilePhotoLocalUri) }
+    var companyLogoUri by remember { mutableStateOf(profile.companyLogoLocalUri) }
+
+    val profilePhotoPicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = { uri ->
+            if (uri != null) profilePhotoUri = uri.toString()
+        }
+    )
+
+    val companyLogoPicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = { uri ->
+            if (uri != null) companyLogoUri = uri.toString()
+        }
+    )
 
     val validationState by viewModel.usernameValidationState.collectAsState()
 
@@ -68,6 +87,23 @@ fun OnboardingScreen(
                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f),
                 modifier = Modifier.padding(bottom = 24.dp)
             )
+            
+            Row(
+                modifier = Modifier.fillMaxWidth().padding(bottom = 16.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                OutlinedButton(onClick = { 
+                    profilePhotoPicker.launch(androidx.activity.result.PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                }) {
+                    Text(if (profilePhotoUri != null) "Photo Selected" else "Add Photo")
+                }
+                
+                OutlinedButton(onClick = { 
+                    companyLogoPicker.launch(androidx.activity.result.PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                }) {
+                    Text(if (companyLogoUri != null) "Logo Selected" else "Add Logo")
+                }
+            }
 
             OutlinedTextField(
                 value = fullName,
@@ -166,7 +202,9 @@ fun OnboardingScreen(
                             phone = phone,
                             email = email,
                             website = website,
-                            username = username
+                            username = username,
+                            profilePhotoLocalUri = profilePhotoUri,
+                            companyLogoLocalUri = companyLogoUri
                         )
                     )
                     viewModel.saveProfile()

@@ -80,10 +80,14 @@ dependencies {
     implementation("com.google.zxing:core:3.5.2") // QR Code
 
     // Supabase Dependencies
-    val supabaseVersion = "2.0.0"
+    val supabaseVersion = "2.1.3"
     implementation("io.github.jan-tennert.supabase:postgrest-kt:$supabaseVersion")
     implementation("io.github.jan-tennert.supabase:gotrue-kt:$supabaseVersion")
-    implementation("io.ktor:ktor-client-core:2.3.6")
+    implementation("io.github.jan-tennert.supabase:storage-kt:$supabaseVersion")
+    implementation("io.ktor:ktor-client-android:2.3.8")
+    
+    // Coil for image loading
+    implementation("io.coil-kt:coil-compose:2.5.0")
     implementation("io.ktor:ktor-client-cio:2.3.6")
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
 

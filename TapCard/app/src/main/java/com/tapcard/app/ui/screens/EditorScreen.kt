@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.graphics.Color
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import com.tapcard.app.ui.components.BusinessCardPreview
 import com.tapcard.app.ui.viewmodel.ProfileViewModel
 import com.tapcard.app.ui.viewmodel.UsernameValidationState
@@ -25,6 +27,24 @@ fun EditorScreen(
     
     var username by remember { mutableStateOf(profile.username) }
     val validationState by viewModel.usernameValidationState.collectAsState()
+    
+    val profilePhotoPicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = { uri ->
+            if (uri != null) {
+                viewModel.updateProfile(profile.copy(profilePhotoLocalUri = uri.toString()))
+            }
+        }
+    )
+
+    val companyLogoPicker = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.PickVisualMedia(),
+        onResult = { uri ->
+            if (uri != null) {
+                viewModel.updateProfile(profile.copy(companyLogoLocalUri = uri.toString()))
+            }
+        }
+    )
 
     // Initialize validation
     LaunchedEffect(Unit) {
@@ -75,6 +95,25 @@ fun EditorScreen(
                         viewModel.updateProfile(profile.copy(isDarkTheme = isDark))
                     }
                 )
+            }
+            
+            Spacer(modifier = Modifier.height(24.dp))
+            
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceEvenly
+            ) {
+                OutlinedButton(onClick = { 
+                    profilePhotoPicker.launch(androidx.activity.result.PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                }) {
+                    Text("Change Photo")
+                }
+                
+                OutlinedButton(onClick = { 
+                    companyLogoPicker.launch(androidx.activity.result.PickVisualMediaRequest(ActivityResultContracts.PickVisualMedia.ImageOnly))
+                }) {
+                    Text("Change Logo")
+                }
             }
             
             Spacer(modifier = Modifier.height(24.dp))

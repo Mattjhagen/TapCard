@@ -34,8 +34,11 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideProfileRepository(profileDao: ProfileDao): ProfileRepository {
-        return SyncProfileRepositoryImpl(profileDao)
+    fun provideProfileRepository(
+        profileDao: ProfileDao,
+        @ApplicationContext context: Context
+    ): ProfileRepository {
+        return SyncProfileRepositoryImpl(profileDao, context)
     }
 
     @Provides
