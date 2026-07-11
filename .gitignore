@@ -1,4 +1,23 @@
 .env
+.env.local
 google-services.json
 app/google-services.json
 TapCard/app/google-services.json
+*.keystore
+*.jks
+
+# Gradle / Android build output
+TapCard/.gradle/
+TapCard/build/
+TapCard/app/build/
+TapCard/*/build/
+.gradle/
+build/
+*.iml
+.idea/
+local.properties
+
+# Node / Next.js (web/)
+web/node_modules/
+web/.next/
+web/out/
