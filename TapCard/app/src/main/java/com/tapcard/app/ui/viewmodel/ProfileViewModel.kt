@@ -152,9 +152,9 @@ class ProfileViewModel @Inject constructor(
         // Use the stored slug — never re-derive from display name at runtime.
         val slug = profileState.value.profileSlug.ifBlank { computeSlug(profileState.value.profileName) }
         return if (slug == "personal" || slug == "default") {
-            "https://tapcard.app/u/$username"
+            "https://tapcard.space/u/$username"
         } else {
-            "https://tapcard.app/u/$username/$slug"
+            "https://tapcard.space/u/$username/$slug"
         }
     }
 

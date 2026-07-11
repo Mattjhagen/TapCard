@@ -1,7 +1,7 @@
 # TapCard iOS
 
 Native SwiftUI companion to the Android app in `../TapCard`, sharing the same Supabase backend
-and public web profiles (`tapcard.app/u/{username}`).
+and public web profiles (`tapcard.space/u/{username}`).
 
 ## Feature parity with Android
 

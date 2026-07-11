@@ -80,15 +80,15 @@ Get these values from: Supabase Dashboard → **Settings → API**.
 
 ### 2C — Domain
 
-1. In Vercel → **Settings → Domains**, add `tapcard.app`
+1. In Vercel → **Settings → Domains**, add `tapcard.space`
 2. Add the DNS records Vercel provides to your domain registrar
 3. Vercel will auto-provision TLS
 
 ### 2D — Verify Deployment
 
 After deploy completes, open:
-- `https://tapcard.app` — landing page
-- `https://tapcard.app/u/{your-username}` — profile (requires Supabase SQL to be run first)
+- `https://tapcard.space` — landing page
+- `https://tapcard.space/u/{your-username}` — profile (requires Supabase SQL to be run first)
 
 ---
 
@@ -173,20 +173,20 @@ Run through this checklist on a real Android device with NFC:
 
 #### QR Code
 - [ ] Generate QR — code appears for active profile
-- [ ] Scan QR with another phone — opens `https://tapcard.app/u/{username}` in browser
+- [ ] Scan QR with another phone — opens `https://tapcard.space/u/{username}` in browser
 - [ ] Export QR as PNG — saved to gallery
 
 #### NFC
 - [ ] Tap "Program NFC Tag" — app enters programming mode
 - [ ] Hold phone to NFC sticker — success toast, tag written
 - [ ] Tap tag with another phone — opens profile URL in browser (no app required)
-- [ ] Verify URL on tag is `https://tapcard.app/u/{username}` (not `/card/`)
-- [ ] Work profile NFC — URL is `https://tapcard.app/u/{username}/work`
+- [ ] Verify URL on tag is `https://tapcard.space/u/{username}` (not `/card/`)
+- [ ] Work profile NFC — URL is `https://tapcard.space/u/{username}/work`
 
 #### Web Profile (Verify Against Live Vercel URL)
-- [ ] `https://tapcard.app/u/{username}` loads Personal profile
-- [ ] `https://tapcard.app/u/{username}/work` loads Work profile
-- [ ] `https://tapcard.app/card/{username}` redirects to `/u/{username}` (308)
+- [ ] `https://tapcard.space/u/{username}` loads Personal profile
+- [ ] `https://tapcard.space/u/{username}/work` loads Work profile
+- [ ] `https://tapcard.space/card/{username}` redirects to `/u/{username}` (308)
 - [ ] "Save Contact" button downloads `.vcf` file
 - [ ] vCard opens in Contacts app with correct name, phone, email
 
@@ -196,8 +196,8 @@ Run through this checklist on a real Android device with NFC:
   SELECT * FROM analytics_events ORDER BY created_at DESC LIMIT 5;
   ```
   Expect: `event_type = 'profile_view'`, `source = 'unknown'`
-- [ ] Visit `https://tapcard.app/u/{username}?ref=nfc` — row shows `source = 'nfc'`
-- [ ] Visit `https://tapcard.app/u/{username}?ref=qr` — row shows `source = 'qr'`
+- [ ] Visit `https://tapcard.space/u/{username}?ref=nfc` — row shows `source = 'nfc'`
+- [ ] Visit `https://tapcard.space/u/{username}?ref=qr` — row shows `source = 'qr'`
 
 ---
 
@@ -217,8 +217,8 @@ Run through this sequence top to bottom on a fresh device:
       Different job title, same username account
       slug = "work"
       Save → verify synced
-5.  Generate QR (Personal) → scan → opens tapcard.app/u/johndoe       ✓
-6.  Generate QR (Work)     → scan → opens tapcard.app/u/johndoe/work  ✓
+5.  Generate QR (Personal) → scan → opens tapcard.space/u/johndoe       ✓
+6.  Generate QR (Work)     → scan → opens tapcard.space/u/johndoe/work  ✓
 7.  Program NFC tag (Personal) → tap with other phone → web profile    ✓
 8.  On web — Personal profile:
       Photo loads                                                        ✓
@@ -229,7 +229,7 @@ Run through this sequence top to bottom on a fresh device:
 9.  On web — Work profile:
       Different profile card shown                                        ✓
       Same username, different identity                                   ✓
-10. Tap tapcard.app/card/johndoe → redirects to /u/johndoe             ✓
+10. Tap tapcard.space/card/johndoe → redirects to /u/johndoe             ✓
 ```
 
 ---
@@ -241,7 +241,7 @@ Run through this sequence top to bottom on a fresh device:
 | Supabase SQL not run | **Blocking** | Run `supabase_schema.sql` then `phase5c.sql` in SQL Editor |
 | `profile_slug` column missing | **Blocking** | Resolved by running `phase5c.sql` |
 | Vercel env vars not set | **Blocking** | Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` in Vercel |
-| Domain DNS not pointed | **Blocking** | Point `tapcard.app` DNS to Vercel nameservers |
+| Domain DNS not pointed | **Blocking** | Point `tapcard.space` DNS to Vercel nameservers |
 | Firebase `google-services.json` missing | Partial | Crashlytics/Analytics disabled; app still runs without it |
 | Release APK unsigned | Pre-release | Must configure signing before Play Store upload |
 
@@ -250,10 +250,10 @@ Run through this sequence top to bottom on a fresh device:
 ## Architecture Reference
 
 ```
-tapcard.app/           → GitHub Pages static landing (docs/)
-tapcard.app/u/*        → Vercel (web/) — Next.js dynamic profiles
-tapcard.app/api/vcard  → Vercel (web/) — vCard generation
-tapcard.app/card/*     → Vercel (web/) — 308 redirect to /u/*
+tapcard.space/           → GitHub Pages static landing (docs/)
+tapcard.space/u/*        → Vercel (web/) — Next.js dynamic profiles
+tapcard.space/api/vcard  → Vercel (web/) — vCard generation
+tapcard.space/card/*     → Vercel (web/) — 308 redirect to /u/*
 
 Android app            → TapCard/
 Supabase project       → profiles, feedback, analytics_events tables

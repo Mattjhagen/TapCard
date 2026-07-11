@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     default: 'TapCard - Digital Identity Platform',
   },
   description: 'Create and share your digital business card with TapCard.',
-  metadataBase: new URL('https://tapcard.app'),
+  metadataBase: new URL('https://tapcard.space'),
   openGraph: {
     siteName: 'TapCard',
     locale: 'en_US',
