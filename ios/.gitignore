@@ -1,0 +1,8 @@
+TapCard/Config/Secrets.xcconfig
+*.xcodeproj/
+xcuserdata/
+.build/
+DerivedData/
+*.ipa
+*.dSYM.zip
+*.dSYM

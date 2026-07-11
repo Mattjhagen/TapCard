@@ -1,4 +1,0 @@
-#Sun Jun 28 12:10:43 CDT 2026
-base.0=/Users/matty/Git_Repos/BusinessCardNFC/TapCard/app/build/intermediates/dex/release/minifyReleaseWithR8/classes.dex
-renamed.0=classes.dex
-path.0=classes.dex
