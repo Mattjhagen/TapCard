@@ -1,0 +1,41 @@
+name: TapCard
+options:
+  bundleIdPrefix: com.tapcard
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+
+packages:
+  Supabase:
+    url: https://github.com/supabase/supabase-swift
+    from: 2.5.1
+
+configFiles:
+  Debug: TapCard/Config/Secrets.xcconfig
+  Release: TapCard/Config/Secrets.xcconfig
+
+targets:
+  TapCard:
+    type: application
+    platform: iOS
+    sources:
+      - path: TapCard
+        excludes:
+          - Config/Secrets.xcconfig.example
+    info:
+      path: TapCard/Info.plist
+      properties: {}
+    entitlements:
+      path: TapCard/TapCard.entitlements
+      properties:
+        com.apple.developer.nfc.readersession.formats:
+          - NDEF
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.tapcard.app
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: "1,2"
+        CODE_SIGN_ENTITLEMENTS: TapCard/TapCard.entitlements
+    dependencies:
+      - package: Supabase
+        product: Supabase

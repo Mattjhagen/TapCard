@@ -1,6 +1,6 @@
 # TapCard Platform
 
-TapCard is a digital identity platform built for Android, featuring NFC capabilities, a Supabase backend, and a web profile platform.
+TapCard is a digital identity platform for Android and iOS, featuring NFC capabilities, a Supabase backend, and a web profile platform.
 
 ## Setup Instructions
 
@@ -13,6 +13,12 @@ TapCard is a digital identity platform built for Android, featuring NFC capabili
 
 ### Supabase Setup
 1. Create a Supabase project.
-2. Run the SQL schema from `backend/supabase_schema.sql`.
-3. Copy the `.env.example` to `.env` and fill in your keys.
+2. Run the SQL schema from `TapCard/backend/supabase_schema.sql`, then `TapCard/backend/migrations/phase5c.sql`.
+3. Copy the `.env.example` to `.env` and fill in your keys (used by the Android Gradle build).
+
+### iOS Setup
+
+See `ios/README.md` for the native SwiftUI app - setup, feature parity notes vs. Android, and
+important platform differences around NFC (iOS can read/write physical NDEF tags but, unlike
+what a "tap phones together" name implies, no iOS app can emulate itself as a tag).
 
