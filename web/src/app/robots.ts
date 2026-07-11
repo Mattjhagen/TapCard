@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: '/',
       disallow: ['/api/'],
     },
-    sitemap: 'https://tapcard.app/sitemap.xml',
+    sitemap: 'https://tapcard.space/sitemap.xml',
   }
 }

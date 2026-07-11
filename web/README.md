@@ -6,7 +6,7 @@ This is the Next.js frontend for TapCard, providing public profiles for users to
 
 1. Create a new project on Vercel and import the `web/` folder from this repository.
 2. In the Vercel project settings, set the root directory to `web/`.
-3. Go to **Settings > Domains** and add `tapcard.app`.
+3. Go to **Settings > Domains** and add `tapcard.space`.
 4. Add the following environment variables in the **Settings > Environment Variables** section:
 
 ### Required Environment Variables

@@ -26,7 +26,7 @@ serve(async (req) => {
     // Placeholder JWT Payload structure
     const passPayload = {
       aud: "google",
-      origins: ["https://tapcard.app"],
+      origins: ["https://tapcard.space"],
       iss: "google-service-account-email@project.iam.gserviceaccount.com",
       iat: Math.floor(Date.now() / 1000),
       typ: "savetowallet",
@@ -38,7 +38,7 @@ serve(async (req) => {
             genericType: "GENERIC_TYPE_UNSPECIFIED",
             hexBackgroundColor: "#000000",
             logo: {
-              sourceUri: { uri: "https://tapcard.app/logo.png" }
+              sourceUri: { uri: "https://tapcard.space/logo.png" }
             },
             cardTitle: {
               defaultValue: { language: "en-US", value: company || "TapCard" }
@@ -51,7 +51,7 @@ serve(async (req) => {
             },
             barcode: {
               type: "QR_CODE",
-              value: `https://tapcard.app/card/${username}`
+              value: `https://tapcard.space/card/${username}`
             }
           }
         ]
