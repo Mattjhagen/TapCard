@@ -24,6 +24,17 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
 
+      - name: Write Supabase config
+        if: ${{ secrets.SUPABASE_PROJECT_URL != '' }}
+        env:
+          SUPABASE_PROJECT_URL: ${{ secrets.SUPABASE_PROJECT_URL }}
+          SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+        run: |
+          cat > .env <<EOF
+          SUPABASE_PROJECT_URL=$SUPABASE_PROJECT_URL
+          SUPABASE_ANON_PUBLIC=$SUPABASE_ANON_KEY
+          EOF
+
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
 

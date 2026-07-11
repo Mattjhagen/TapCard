@@ -14,7 +14,7 @@ TapCard is a digital identity platform for Android and iOS, featuring NFC capabi
 ### Supabase Setup
 1. Create a Supabase project.
 2. Run the SQL schema from `TapCard/backend/supabase_schema.sql`, then `TapCard/backend/migrations/phase5c.sql`.
-3. Copy the `.env.example` to `.env` and fill in your keys (used by the Android Gradle build).
+3. Copy `TapCard/.env.example` to `TapCard/.env` and fill in your keys (the Android Gradle build reads `.env` relative to the Gradle root, i.e. `TapCard/`, not the repo root).
 
 ### iOS Setup
 
