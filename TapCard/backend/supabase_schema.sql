@@ -1,7 +1,7 @@
 -- Supabase Schema for TapCard MVP
-
--- Enable RLS
-ALTER TABLE auth.users ENABLE ROW LEVEL SECURITY;
+-- Note: do NOT try to ALTER auth.users - it is owned by Supabase's internal
+-- auth role and fails with "must be owner of table users" in the SQL editor.
+-- The auth schema is managed by Supabase; policies below only reference auth.uid().
 
 -- Profiles table
 CREATE TABLE public.profiles (
