@@ -98,7 +98,7 @@ export default function PrivacyPolicy() {
             <p className="mt-3">
               Questions about this policy or your data:{" "}
               <a
-                href="mailto:mattjhagen0@gmail.com"
+                href="mailto:support@tapcard.space"
                 className="text-teal-300 hover:text-teal-200"
               >
                 mattjhagen0@gmail.com
