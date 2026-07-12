@@ -25,15 +25,17 @@ jobs:
         run: chmod +x gradlew
 
       - name: Write Supabase config
-        if: ${{ secrets.SUPABASE_PROJECT_URL != '' }}
         env:
           SUPABASE_PROJECT_URL: ${{ secrets.SUPABASE_PROJECT_URL }}
           SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
         run: |
-          cat > .env <<EOF
-          SUPABASE_PROJECT_URL=$SUPABASE_PROJECT_URL
-          SUPABASE_ANON_PUBLIC=$SUPABASE_ANON_KEY
-          EOF
+          if [ -n "$SUPABASE_PROJECT_URL" ]; then
+            printf 'SUPABASE_PROJECT_URL=%s\nSUPABASE_ANON_PUBLIC=%s\n' \
+              "$SUPABASE_PROJECT_URL" "$SUPABASE_ANON_KEY" > .env
+            echo "Supabase config written"
+          else
+            echo "SUPABASE_PROJECT_URL secret not set - building in offline mode"
+          fi
 
       - name: Build debug APK
         run: ./gradlew assembleDebug --stacktrace
