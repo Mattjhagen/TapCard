@@ -159,7 +159,7 @@ class SyncProfileRepositoryImpl @Inject constructor(
                     } else if (e.message?.contains("row-level security") == true || e.message?.contains("rls") == true) {
                         "RLS Policy failure."
                     } else {
-                        "An unexpected error occurred."
+                        e.message ?: "An unexpected error occurred."
                     }
                 }
             }
