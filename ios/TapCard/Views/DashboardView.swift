@@ -181,7 +181,7 @@ struct DashboardView: View {
 
     private var nfcProgrammingOverlay: some View {
         ZStack {
-            Color.black.opacity(0.85)
+            Color.black
                 .ignoresSafeArea()
                 .onTapGesture {} // Block underlying interactions
 
