@@ -162,6 +162,9 @@ export default function Home() {
             <Link href="/privacy" className="transition-colors hover:text-zinc-300">
               Privacy
             </Link>
+            <Link href="/terms" className="transition-colors hover:text-zinc-300">
+              Terms
+            </Link>
             <a
               href="https://github.com/Mattjhagen/TapCard"
               target="_blank"
