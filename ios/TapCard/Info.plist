@@ -3,9 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
-	<key>CFBundleDisplayName</key>
-	<string>TapCard</string>
+	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,38 +18,5 @@
 	<string>1.0</string>
 	<key>CFBundleVersion</key>
 	<string>1</string>
-	<key>LSRequiresIPhoneOS</key>
-	<true/>
-	<key>UILaunchScreen</key>
-	<dict/>
-	<key>UIRequiredDeviceCapabilities</key>
-	<array>
-		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>UISupportedInterfaceOrientations~ipad</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
-	</array>
-
-	<!-- Core NFC: reading/writing physical NDEF tags (see NFCTagService.swift) -->
-	<key>NFCReaderUsageDescription</key>
-	<string>TapCard uses NFC to read and program physical tags with your profile link.</string>
-
-	<!-- Writing generated QR codes to Photos (UIImageWriteToSavedPhotosAlbum) -->
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>TapCard saves your generated QR code to your photo library when you tap "Save QR".</string>
-
-	<!-- Injected from Config/Secrets.xcconfig at build time - mirrors the root .env pattern -->
-	<key>SUPABASE_PROJECT_URL</key>
-	<string>$(SUPABASE_PROJECT_URL)</string>
-	<key>SUPABASE_ANON_KEY</key>
-	<string>$(SUPABASE_ANON_KEY)</string>
 </dict>
 </plist>
