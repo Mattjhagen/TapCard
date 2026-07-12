@@ -17,12 +17,13 @@ if (googleServicesJson.exists()) {
 
 android {
     namespace = "com.tapcard.app"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.tapcard.app"
         minSdk = 26
-        targetSdk = 34
+        // Google Play requires new apps to target API 35+ (enforced since Aug 2025)
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -45,6 +46,22 @@ android {
         buildConfigField("String", "SUPABASE_PUBLISHABLE_KEY", "\"$supabaseAnonKey\"")
     }
 
+    // Upload-key signing for Play Store releases. Driven entirely by environment
+    // variables so no secret material ever lives in the repo; locally you can
+    // export them, in CI they come from GitHub secrets. When unset, release
+    // builds stay unsigned (fine for CI verification, not distributable).
+    val keystorePath: String? = System.getenv("TAPCARD_KEYSTORE_FILE")
+    if (keystorePath != null) {
+        signingConfigs {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("TAPCARD_KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("TAPCARD_KEY_ALIAS")
+                keyPassword = System.getenv("TAPCARD_KEY_PASSWORD")
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = true
@@ -52,6 +69,9 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            if (keystorePath != null) {
+                signingConfig = signingConfigs.getByName("release")
+            }
         }
     }
     compileOptions {

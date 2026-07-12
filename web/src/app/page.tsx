@@ -97,12 +97,10 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
-              href="https://github.com/Mattjhagen/TapCard/actions/workflows/android-build.yml"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="https://github.com/Mattjhagen/TapCard/releases/download/debug-latest/tapcard-debug.apk"
               className="rounded-full bg-teal-300 px-7 py-3 font-semibold text-[#0b0e14] transition-colors hover:bg-teal-200"
             >
-              Get the Android App
+              Download the Android App
             </a>
             <Link
               href="/u/mattjhagen"
@@ -161,6 +159,9 @@ export default function Home() {
             <span>TapCard</span>
           </div>
           <div className="flex gap-6">
+            <Link href="/privacy" className="transition-colors hover:text-zinc-300">
+              Privacy
+            </Link>
             <a
               href="https://github.com/Mattjhagen/TapCard"
               target="_blank"
