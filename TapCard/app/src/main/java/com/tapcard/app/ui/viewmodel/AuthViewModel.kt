@@ -28,6 +28,12 @@ class AuthViewModel @Inject constructor(
         }
     }
 
+    fun signInWithGoogle() {
+        viewModelScope.launch {
+            authRepository.signInWithGoogle()
+        }
+    }
+
     fun signOut() {
         viewModelScope.launch {
             authRepository.signOut()

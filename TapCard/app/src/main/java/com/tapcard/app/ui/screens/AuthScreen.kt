@@ -66,6 +66,31 @@ fun AuthScreen(
             AuthState.SIGNED_OUT -> {
                 Text(text = "TapCard Authentication", style = MaterialTheme.typography.headlineSmall)
                 Spacer(modifier = Modifier.height(24.dp))
+                Button(
+                    onClick = { viewModel.signInWithGoogle() },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = ButtonDefaults.buttonColors(
+                        containerColor = MaterialTheme.colorScheme.secondaryContainer,
+                        contentColor = MaterialTheme.colorScheme.onSecondaryContainer
+                    )
+                ) {
+                    Text("Continue with Google")
+                }
+                Spacer(modifier = Modifier.height(16.dp))
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    Divider(modifier = Modifier.weight(1f))
+                    Text(
+                        text = " OR ",
+                        style = MaterialTheme.typography.bodySmall,
+                        modifier = Modifier.padding(horizontal = 8.dp),
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                    Divider(modifier = Modifier.weight(1f))
+                }
+                Spacer(modifier = Modifier.height(16.dp))
                 OutlinedTextField(
                     value = email,
                     onValueChange = { email = it },

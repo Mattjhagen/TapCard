@@ -4,10 +4,15 @@ import com.tapcard.app.di.SupabaseClientProvider
 import com.tapcard.app.domain.auth.AuthRepository
 import com.tapcard.app.domain.auth.AuthState
 import io.github.jan.supabase.gotrue.auth
+import io.github.jan.supabase.gotrue.providers.Google
 import io.github.jan.supabase.gotrue.providers.builtin.Email
+import io.github.jan.supabase.gotrue.SessionStatus
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -22,8 +27,15 @@ class SupabaseAuthRepositoryImpl @Inject constructor() : AuthRepository {
     override val authState: StateFlow<AuthState> = _authState.asStateFlow()
 
     init {
-        client?.auth?.currentSessionOrNull()?.let {
-            _authState.value = AuthState.SIGNED_IN
+        client?.auth?.let { auth ->
+            CoroutineScope(Dispatchers.Main).launch {
+                auth.sessionStatus.collect { status ->
+                    _authState.value = when (status) {
+                        is SessionStatus.Authenticated -> AuthState.SIGNED_IN
+                        else -> AuthState.SIGNED_OUT
+                    }
+                }
+            }
         }
     }
 
@@ -53,6 +65,19 @@ class SupabaseAuthRepositoryImpl @Inject constructor() : AuthRepository {
                 this.password = password
             }
             _authState.value = AuthState.SIGNED_IN
+            true
+        } catch (e: Exception) {
+            e.printStackTrace()
+            _authState.value = AuthState.ERROR
+            false
+        }
+    }
+
+    override suspend fun signInWithGoogle(): Boolean {
+        if (client == null) return false
+        _authState.value = AuthState.LOADING
+        return try {
+            client.auth.signInWith(Google, redirectUrl = "tapcard://login-callback")
             true
         } catch (e: Exception) {
             e.printStackTrace()
