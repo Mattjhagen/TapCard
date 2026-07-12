@@ -13,7 +13,10 @@ object SupabaseClientProvider {
                 supabaseUrl = BuildConfig.SUPABASE_PROJECT_URL,
                 supabaseKey = BuildConfig.SUPABASE_PUBLISHABLE_KEY
             ) {
-                install(Auth)
+                install(Auth) {
+                    scheme = "tapcard"
+                    host = "login-callback"
+                }
                 install(Postgrest)
             }
         } else {
