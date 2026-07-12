@@ -91,14 +91,19 @@ struct DashboardView: View {
                 .padding(.horizontal, 24)
 
                 Button {
-                    toastMessage = "Apple Wallet coming soon"
+                    let profile = profileViewModel.profile
+                    let username = profile.username.isEmpty ? profile.id : profile.username
+                    let slug = profile.profileSlug.isEmpty ? Profile.computeSlug(from: profile.profileName) : profile.profileSlug
+                    let walletUrl = "\(AppConfig.baseURL)/api/wallet/apple/\(username)/\(slug)"
+                    if let url = URL(string: walletUrl) {
+                        UIApplication.shared.open(url)
+                    }
                 } label: {
-                    Text("Add to Apple Wallet (coming soon)")
+                    Text("Add to Apple Wallet")
                         .frame(maxWidth: .infinity)
                         .fontWeight(.semibold)
                 }
                 .buttonStyle(.bordered)
-                .disabled(true)
                 .padding(.horizontal, 24)
             }
             .padding(.vertical, 16)

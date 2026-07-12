@@ -312,7 +312,11 @@ fun DashboardScreen(
                 onClick = {
                     com.tapcard.app.utils.AnalyticsManager.logWalletButtonTapped()
                     if (WalletConfig.isGoogleWalletEnabled) {
-                        // Real Wallet implementation goes here when backend is ready
+                        val username = profile.username.ifBlank { profile.id.toString() }
+                        val slug = profile.profileSlug.ifBlank { ProfileViewModel.computeSlug(profile.profileName) }
+                        val walletUrl = "https://tapcard.space/api/wallet/google/$username/$slug"
+                        val intent = Intent(Intent.ACTION_VIEW, android.net.Uri.parse(walletUrl))
+                        context.startActivity(intent)
                     } else {
                         Toast.makeText(context, "Google Wallet requires backend configuration.", Toast.LENGTH_SHORT).show()
                     }
