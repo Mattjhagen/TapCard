@@ -43,8 +43,8 @@ compiled**. To build it:
    ```bash
    cp TapCard/Config/Secrets.xcconfig.example TapCard/Config/Secrets.xcconfig
    ```
-   Use the same `SUPABASE_PROJECT_URL` and anon/publishable key as the root `.env.example` /
-   `web/.env.example` — never the service-role key.
+   Use the same `SUPABASE_PROJECT_URL` and anon/publishable key as `../TapCard/.env.example` /
+   `../web/.env.example` — never the service-role key.
 4. Open `TapCard.xcodeproj` in Xcode, select a development team under Signing & Capabilities
    (required for the NFC entitlement to work on a physical device), and run on a physical iPhone.
    **NFC does not work in the Simulator.**

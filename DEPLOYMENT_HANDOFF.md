@@ -267,5 +267,6 @@ Storage bucket         → profile-images (public)
 | `TapCard/backend/supabase_schema.sql` | Full initial schema — run first |
 | `TapCard/backend/migrations/phase5c.sql` | Adds `profile_slug` — run second |
 | `web/.env.example` | Template for required Vercel env vars |
+| `TapCard/.env.example` | Template for the Android Gradle build's Supabase config (copy to `TapCard/.env`) |
 | `TapCard/google-services.template.json` | Firebase config template |
 | `docs/index.html` | Static landing page served by GitHub Pages |
