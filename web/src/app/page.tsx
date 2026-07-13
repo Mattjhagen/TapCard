@@ -97,7 +97,7 @@ export default function Home() {
           </p>
           <div className="mt-10 flex flex-col gap-4 sm:flex-row">
             <a
-              href="https://github.com/Mattjhagen/TapCard/releases/download/v2beta/TapCard_debug.apk"
+              href="https://github.com/Mattjhagen/TapCard/releases/download/v2beta/TapCard.apk"
               className="rounded-full bg-teal-300 px-7 py-3 font-semibold text-[#0b0e14] transition-colors hover:bg-teal-200"
             >
               Download the Android App
