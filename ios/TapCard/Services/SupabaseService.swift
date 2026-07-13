@@ -41,6 +41,16 @@ final class SupabaseService {
         _ = try await client.auth.signIn(email: email, password: password)
     }
 
+    func signInWithApple(idToken: String) async throws {
+        guard let client else { throw SupabaseServiceError.notConfigured }
+        _ = try await client.auth.signInWithIdToken(
+            credentials: .init(
+                provider: .apple,
+                idToken: idToken
+            )
+        )
+    }
+
     func signOut() async throws {
         guard let client else { throw SupabaseServiceError.notConfigured }
         try await client.auth.signOut()

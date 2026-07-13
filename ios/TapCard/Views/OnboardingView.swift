@@ -112,15 +112,13 @@ struct OnboardingView: View {
 
     // Step 0: Welcome
     private var welcomeStep: some View {
-        VStack(spacing: 24) {
-            Spacer().frame(height: 12)
-            
+        VStack(spacing: 16) {
             Text("TapCard")
-                .font(.system(size: 40, weight: .black, design: .rounded))
+                .font(.system(size: 32, weight: .black, design: .rounded))
                 .foregroundStyle(Color.accentColor)
             
             Text("Your identity, instantly shareable.")
-                .font(.title3)
+                .font(.subheadline)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -130,10 +128,11 @@ struct OnboardingView: View {
                 profilePhotoImage: profilePhotoImage,
                 companyLogoImage: companyLogoImage
             )
+            .frame(maxWidth: 320)
             .padding(.horizontal, 12)
             
             Text("Build your digital business card in three easy steps. Share it instantly with anyone via NFC tags or QR codes—no app required for them.")
-                .font(.body)
+                .font(.footnote)
                 .multilineTextAlignment(.center)
                 .foregroundStyle(.secondary)
                 .padding(.horizontal, 16)
@@ -169,6 +168,7 @@ struct OnboardingView: View {
                 profilePhotoImage: profilePhotoImage,
                 companyLogoImage: companyLogoImage
             )
+            .frame(maxWidth: 320)
             .padding(.bottom, 12)
 
             HStack(spacing: 16) {
@@ -230,6 +230,7 @@ struct OnboardingView: View {
                 profilePhotoImage: profilePhotoImage,
                 companyLogoImage: companyLogoImage
             )
+            .frame(maxWidth: 320)
             .padding(.bottom, 12)
 
             VStack(spacing: 12) {
@@ -282,6 +283,7 @@ struct OnboardingView: View {
                 profilePhotoImage: profilePhotoImage,
                 companyLogoImage: companyLogoImage
             )
+            .frame(maxWidth: 320)
             .padding(.bottom, 12)
 
             VStack(alignment: .leading, spacing: 6) {

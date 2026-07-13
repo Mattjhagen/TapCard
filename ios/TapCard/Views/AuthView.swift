@@ -1,4 +1,5 @@
 import SwiftUI
+import AuthenticationServices
 
 struct AuthView: View {
     @EnvironmentObject private var authViewModel: AuthViewModel
@@ -23,8 +24,10 @@ struct AuthView: View {
                 ProgressView()
 
             case .error:
-                Text("Authentication failed. Please try again.")
+                Text(authViewModel.errorMessage ?? "Authentication failed. Please try again.")
                     .foregroundStyle(.red)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 16)
                 Button("Retry") {
                     Task { await authViewModel.signOut() }
                 }
@@ -55,6 +58,29 @@ struct AuthView: View {
                     Task { await authViewModel.signUp(email: email, password: password) }
                 }
                 .buttonStyle(.bordered)
+                .frame(maxWidth: .infinity)
+
+                Divider()
+                    .padding(.vertical, 8)
+
+                SignInWithAppleButton(.signIn) { request in
+                    request.requestedScopes = [.email, .fullName]
+                } onCompletion: { result in
+                    switch result {
+                    case .success(let authorization):
+                        Task {
+                            await authViewModel.signInWithApple(authorization: authorization)
+                        }
+                    case .failure(let error):
+                        authViewModel.errorMessage = error.localizedDescription
+                        // Show error screen
+                        Task {
+                            await authViewModel.signOut()
+                        }
+                    }
+                }
+                .signInWithAppleButtonStyle(.black)
+                .frame(height: 44)
                 .frame(maxWidth: .infinity)
 
                 Button("Skip for now", action: onAuthSuccess)

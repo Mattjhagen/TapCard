@@ -1,4 +1,5 @@
 import Foundation
+import AuthenticationServices
 
 @MainActor
 final class AuthViewModel: ObservableObject {
@@ -42,6 +43,28 @@ final class AuthViewModel: ObservableObject {
         errorMessage = nil
         do {
             try await service.signIn(email: email, password: password)
+            authState = .signedIn
+        } catch {
+            authState = .error
+            errorMessage = error.localizedDescription
+        }
+    }
+
+    func signInWithApple(authorization: ASAuthorization) async {
+        guard service.isConfigured else { authState = .unconfigured; return }
+        authState = .loading
+        errorMessage = nil
+        
+        guard let credential = authorization.credential as? ASAuthorizationAppleIDCredential,
+              let tokenData = credential.identityToken,
+              let idToken = String(data: tokenData, encoding: .utf8) else {
+            authState = .error
+            errorMessage = "Could not retrieve identity token from Apple."
+            return
+        }
+        
+        do {
+            try await service.signInWithApple(idToken: idToken)
             authState = .signedIn
         } catch {
             authState = .error
