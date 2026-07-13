@@ -29,11 +29,12 @@ targets:
         SUPABASE_PROJECT_URL: $(SUPABASE_PROJECT_URL)
         SUPABASE_ANON_KEY: $(SUPABASE_ANON_KEY)
         NFCReaderUsageDescription: This app needs access to NFC to read and program physical digital card tags.
+        UILaunchScreen: {}
     entitlements:
       path: TapCard/TapCard.entitlements
       properties:
         com.apple.developer.nfc.readersession.formats:
-          - NDEF
+          - TAG
         com.apple.developer.applesignin:
           - Default
     settings:

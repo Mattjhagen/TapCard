@@ -24,6 +24,8 @@
 	<string>$(SUPABASE_ANON_KEY)</string>
 	<key>SUPABASE_PROJECT_URL</key>
 	<string>$(SUPABASE_PROJECT_URL)</string>
+	<key>UILaunchScreen</key>
+	<dict/>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 </dict>
