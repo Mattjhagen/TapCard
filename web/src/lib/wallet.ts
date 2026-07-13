@@ -107,7 +107,12 @@ export function signAppleWalletManifest(manifestContent: string): Buffer {
     const passinArg = keyPassword ? `-passin pass:${keyPassword}` : ''
     const cmd = `openssl smime -sign -signer "${certPath}" -inkey "${keyPath}" -certfile "${wwdrPath}" -in "${manifestPath}" -out "${signaturePath}" -outform DER -binary ${passinArg}`
 
-    execSync(cmd, { stdio: 'ignore' })
+    try {
+      execSync(cmd, { stdio: 'pipe' })
+    } catch (err: any) {
+      const stderr = err.stderr?.toString() || err.message
+      throw new Error(`OpenSSL failed: ${stderr}`)
+    }
 
     const signature = fs.readFileSync(signaturePath)
     return signature
