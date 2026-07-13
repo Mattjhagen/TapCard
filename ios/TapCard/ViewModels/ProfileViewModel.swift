@@ -199,8 +199,23 @@ final class ProfileViewModel: ObservableObject {
             let remoteProfiles = try await supabase.fetchRemoteProfiles(userId: userId)
             guard !remoteProfiles.isEmpty else { return }
             
+            let localProfiles = await store.loadAll()
+            
             for remote in remoteProfiles {
+                // If there's a local profile with the same slug but a different ID, delete it
+                if let conflict = localProfiles.first(where: { 
+                    $0.profileSlug == remote.profileSlug && $0.id != remote.id 
+                }) {
+                    await store.delete(id: conflict.id)
+                }
+                
                 await store.save(remote)
+                
+                // If the conflicting card was active, switch the active pointer to the remote ID
+                let activeId = store.activeProfileId
+                if activeId == nil || activeId == remote.id || localProfiles.first(where: { $0.id == activeId })?.profileSlug == remote.profileSlug {
+                    store.setActiveProfileId(remote.id)
+                }
             }
             await loadProfiles()
         } catch {
