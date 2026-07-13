@@ -30,9 +30,11 @@ targets:
       properties:
         com.apple.developer.nfc.readersession.formats:
           - NDEF
+        com.apple.developer.applesignin:
+          - Default
     settings:
       base:
-        PRODUCT_BUNDLE_IDENTIFIER: com.tapcard.app
+        PRODUCT_BUNDLE_IDENTIFIER: com.purepulse.tapcardapp
         SWIFT_VERSION: 5.0
         TARGETED_DEVICE_FAMILY: "1,2"
         CODE_SIGN_ENTITLEMENTS: TapCard/TapCard.entitlements
