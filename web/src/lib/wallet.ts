@@ -1,8 +1,5 @@
 import crypto from 'crypto'
-import fs from 'fs'
-import path from 'path'
-import os from 'os'
-import { execSync } from 'child_process'
+import forge from 'node-forge'
 
 function base64url(str: string | Buffer): string {
   const base64 = typeof str === 'string'
@@ -91,36 +88,48 @@ export function signAppleWalletManifest(manifestContent: string): Buffer {
   const passKey = parsePem(passKeyRaw, '-----BEGIN PRIVATE KEY-----')
   const wwdrCert = parsePem(wwdrCertRaw, '-----BEGIN CERTIFICATE-----')
 
-  const tempDir = fs.mkdtempSync(path.join(os.tmpdir(), 'passkit-'))
-  const certPath = path.join(tempDir, 'cert.pem')
-  const keyPath = path.join(tempDir, 'key.pem')
-  const wwdrPath = path.join(tempDir, 'wwdr.pem')
-  const manifestPath = path.join(tempDir, 'manifest.json')
-  const signaturePath = path.join(tempDir, 'signature')
-
   try {
-    fs.writeFileSync(certPath, passCert)
-    fs.writeFileSync(keyPath, passKey)
-    fs.writeFileSync(wwdrPath, wwdrCert)
-    fs.writeFileSync(manifestPath, manifestContent)
-
-    const passinArg = keyPassword ? `-passin pass:${keyPassword}` : ''
-    const cmd = `openssl smime -sign -signer "${certPath}" -inkey "${keyPath}" -certfile "${wwdrPath}" -in "${manifestPath}" -out "${signaturePath}" -outform DER -binary ${passinArg}`
-
-    try {
-      execSync(cmd, { stdio: 'pipe' })
-    } catch (err: any) {
-      const stderr = err.stderr?.toString() || err.message
-      throw new Error(`OpenSSL failed: ${stderr}`)
+    const cert = forge.pki.certificateFromPem(passCert)
+    
+    let privateKey
+    if (keyPassword) {
+      privateKey = forge.pki.decryptRsaPrivateKey(passKey, keyPassword)
+    } else {
+      privateKey = forge.pki.privateKeyFromPem(passKey)
     }
 
-    const signature = fs.readFileSync(signaturePath)
-    return signature
-  } finally {
-    try {
-      fs.rmSync(tempDir, { recursive: true, force: true })
-    } catch (e) {
-      console.error('Failed to cleanup temp dir', e)
-    }
+    const wwdr = forge.pki.certificateFromPem(wwdrCert)
+
+    const p7 = forge.pkcs7.createSignedData()
+    p7.content = forge.util.createBuffer(manifestContent, 'utf8')
+
+    p7.addCertificate(cert)
+    p7.addCertificate(wwdr)
+
+    p7.addSigner({
+      key: privateKey,
+      certificate: cert,
+      digestAlgorithm: forge.pki.oids.sha256,
+      authenticatedAttributes: [
+        {
+          type: forge.pki.oids.contentType,
+          value: forge.pki.oids.data,
+        },
+        {
+          type: forge.pki.oids.messageDigest,
+        },
+        {
+          type: forge.pki.oids.signingTime,
+          value: new Date() as any,
+        },
+      ],
+    })
+
+    p7.sign({ detached: true })
+
+    const derBytes = forge.asn1.toDer(p7.toAsn1()).getBytes()
+    return Buffer.from(derBytes, 'binary')
+  } catch (error: any) {
+    throw new Error(`Failed to sign Apple Wallet pass via node-forge: ${error.message || error}`)
   }
 }
