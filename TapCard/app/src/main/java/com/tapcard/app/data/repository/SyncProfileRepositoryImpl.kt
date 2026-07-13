@@ -12,15 +12,19 @@ import com.tapcard.app.domain.repository.ProfileRepository
 import com.tapcard.app.utils.ImageCompressor
 import io.github.jan.supabase.SupabaseClient
 import io.github.jan.supabase.gotrue.auth
+import io.github.jan.supabase.gotrue.SessionStatus
 import io.github.jan.supabase.postgrest.postgrest
 import io.github.jan.supabase.postgrest.query.Columns
 import io.github.jan.supabase.storage.storage
 import io.github.jan.supabase.exceptions.RestException
 import io.github.jan.supabase.exceptions.HttpRequestException
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 import javax.inject.Singleton
 import android.content.Context
@@ -47,6 +51,56 @@ class SyncProfileRepositoryImpl @Inject constructor(
     override fun setActiveProfileId(id: String) {
         prefs.edit().putString("active_profile_id", id).apply()
         _activeProfileId.value = id
+    }
+
+    init {
+        client?.auth?.let { auth ->
+            CoroutineScope(Dispatchers.IO).launch {
+                auth.sessionStatus.collect { status ->
+                    if (status is SessionStatus.Authenticated) {
+                        try {
+                            val userId = status.session.user?.id
+                            if (userId != null) {
+                                // Fetch remote profiles from Supabase
+                                val remoteProfiles = client.postgrest["profiles"]
+                                    .select {
+                                        filter {
+                                            eq("user_id", userId)
+                                        }
+                                    }.decodeList<RemoteProfileDto>()
+                                
+                                // Save remote profiles into local Room DB to sync identities and UUIDs
+                                remoteProfiles.forEach { remote ->
+                                    profileDao.saveProfile(
+                                        com.tapcard.app.data.local.ProfileEntity(
+                                            id = remote.id,
+                                            userId = remote.userId,
+                                            profileName = remote.profileName,
+                                            profileSlug = remote.profileSlug,
+                                            fullName = remote.fullName ?: "",
+                                            jobTitle = remote.jobTitle ?: "",
+                                            company = remote.company ?: "",
+                                            phone = remote.phone ?: "",
+                                            email = remote.email ?: "",
+                                            username = remote.username,
+                                            website = remote.website ?: "",
+                                            themeColorHex = remote.themeColorHex ?: "#000000",
+                                            isDarkTheme = remote.isDarkTheme,
+                                            isPublic = remote.isPublic,
+                                            profilePhotoUrl = remote.profilePhotoUrl,
+                                            companyLogoUrl = remote.companyLogoUrl,
+                                            isPendingSync = false
+                                        )
+                                    )
+                                }
+                            }
+                        } catch (e: Exception) {
+                            e.printStackTrace()
+                        }
+                    }
+                }
+            }
+        }
     }
 
     override fun getProfileFlow(): Flow<Profile?> {
@@ -145,7 +199,15 @@ class SyncProfileRepositoryImpl @Inject constructor(
                 is RestException -> {
                     when {
                         e.message?.contains("does not exist") == true && e.message?.contains("profiles") == true -> "Table 'profiles' is missing."
-                        e.message?.contains("duplicate key value violates unique constraint") == true -> "Username is already taken."
+                        e.message?.contains("duplicate key value violates unique constraint") == true -> {
+                            if (e.message?.contains("profiles_username_key") == true) {
+                                "Username is already taken."
+                            } else if (e.message?.contains("profiles_user_id_profile_slug_idx") == true) {
+                                "A card with this name/slug already exists on your account."
+                            } else {
+                                "Duplicate key violation: ${e.message}"
+                            }
+                        }
                         e.message?.contains("new row violates row-level security policy") == true -> "RLS Policy failure. Check your Postgres policies."
                         e.message?.contains("bucket") == true -> "Storage bucket is missing or unauthenticated."
                         else -> "Backend error: ${e.message}"
