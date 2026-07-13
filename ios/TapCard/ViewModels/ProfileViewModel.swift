@@ -119,7 +119,7 @@ final class ProfileViewModel: ObservableObject {
         }
 
         do {
-            let userId = session.user.id.uuidString
+            let userId = session.user.id.uuidString.lowercased()
 
             if let profilePhoto, let data = ImageCompressor.compress(profilePhoto) {
                 syncStatus = .uploading
