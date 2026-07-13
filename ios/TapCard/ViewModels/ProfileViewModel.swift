@@ -191,4 +191,20 @@ final class ProfileViewModel: ObservableObject {
     func stopNfcProgramming() {
         nfc.stop()
     }
+
+    func syncRemoteProfiles() async {
+        guard supabase.isConfigured, let session = await supabase.currentSession() else { return }
+        let userId = session.user.id.uuidString.lowercased()
+        do {
+            let remoteProfiles = try await supabase.fetchRemoteProfiles(userId: userId)
+            guard !remoteProfiles.isEmpty else { return }
+            
+            for remote in remoteProfiles {
+                await store.save(remote)
+            }
+            await loadProfiles()
+        } catch {
+            print("Failed to sync remote profiles: \(error.localizedDescription)")
+        }
+    }
 }

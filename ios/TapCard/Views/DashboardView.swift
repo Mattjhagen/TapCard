@@ -141,6 +141,9 @@ struct DashboardView: View {
             .onAppear {
                 profileViewModel.checkNfcState()
                 qrImage = profileViewModel.generateQRCode()
+                Task {
+                    await profileViewModel.syncRemoteProfiles()
+                }
             }
             .onChange(of: profileViewModel.shareableURL) { _ in
                 qrImage = profileViewModel.generateQRCode()

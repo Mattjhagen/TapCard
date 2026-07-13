@@ -64,6 +64,36 @@ final class SupabaseService {
         try await client.from("profiles").upsert(dto).execute()
     }
 
+    func fetchRemoteProfiles(userId: String) async throws -> [Profile] {
+        guard let client else { return [] }
+        let remoteDTOs: [RemoteProfileDTO] = try await client.from("profiles")
+            .select()
+            .eq("user_id", value: userId)
+            .execute()
+            .value
+        
+        return remoteDTOs.map { dto in
+            Profile(
+                id: dto.id,
+                userId: dto.userId,
+                profileName: dto.profileName,
+                profileSlug: dto.profileSlug,
+                fullName: dto.fullName ?? "",
+                jobTitle: dto.jobTitle ?? "",
+                company: dto.company ?? "",
+                phone: dto.phone ?? "",
+                email: dto.email ?? "",
+                username: dto.username,
+                themeColorHex: dto.themeColorHex ?? "#000000",
+                isDarkTheme: dto.isDarkTheme,
+                isPublic: dto.isPublic,
+                isPendingSync: false,
+                profilePhotoUrl: dto.profilePhotoUrl,
+                companyLogoUrl: dto.companyLogoUrl
+            )
+        }
+    }
+
     private struct ProfileIdRow: Codable { let id: String }
 
     func isUsernameTaken(_ username: String) async throws -> Bool {
