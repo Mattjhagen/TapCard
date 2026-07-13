@@ -1,3 +1,4 @@
+// Vercel trigger rebuild: env vars update
 import Link from "next/link";
 import { Nfc, QrCode, Contact, Globe, Smartphone, Share2 } from "lucide-react";
 
